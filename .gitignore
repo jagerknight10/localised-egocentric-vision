@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Local environments and secrets
+.venv/
+venv/
+.env
+
+# Research outputs
+data/raw/
+data/processed/
+data/features/
+outputs/
+checkpoints/
+
+# Notebook and tool caches
+.ipynb_checkpoints/
+.DS_Store

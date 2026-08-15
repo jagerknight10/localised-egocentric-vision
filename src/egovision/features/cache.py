@@ -20,6 +20,7 @@ def save_feature_cache(
         raise ValueError("Features, labels, and frame_indices must share T.")
     output = Path(path)
     output.parent.mkdir(parents=True, exist_ok=True)
+    temporary = output.with_name(output.name + ".tmp")
     torch.save(
         {
             "features": features.detach().cpu(),
@@ -27,8 +28,9 @@ def save_feature_cache(
             "frame_indices": frame_indices.detach().cpu(),
             "metadata": dict(metadata),
         },
-        output,
+        temporary,
     )
+    temporary.replace(output)
 
 
 def load_feature_cache(path: str | Path) -> dict[str, Any]:

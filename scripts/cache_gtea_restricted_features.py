@@ -26,6 +26,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--device", default="auto", choices=("auto", "cpu", "cuda", "mps"))
     parser.add_argument("--margin", type=int, default=16)
     parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--video-name", help="Process one video filename, e.g. S1_Cheese_C1.mp4")
     parser.add_argument("--overwrite", action="store_true")
     return parser
 
@@ -36,7 +37,12 @@ def run(args: argparse.Namespace) -> None:
     masks = index_hand_masks(args.masks, margin=args.margin)
     extractor = DinoV2FeatureExtractor(device=get_device(args.device))
     extractor.load()
-    for video_path in sorted(args.videos.glob("*.mp4")):
+    video_paths = sorted(args.videos.glob("*.mp4"))
+    if args.video_name is not None:
+        video_paths = [path for path in video_paths if path.name == args.video_name]
+        if not video_paths:
+            raise FileNotFoundError(f"Video not found: {args.video_name}")
+    for video_path in video_paths:
         key = video_path.stem.lower().removesuffix("_c1")
         available = masks.get(key, {})
         if not available:

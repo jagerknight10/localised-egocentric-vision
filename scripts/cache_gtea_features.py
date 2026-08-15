@@ -31,10 +31,13 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--stride", type=int, default=15)
     parser.add_argument("--device", choices=("auto", "cpu", "cuda", "mps"), default="auto")
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--disable-cudnn", action="store_true")
     return parser
 
 
 def run(args: argparse.Namespace) -> None:
+    if args.disable_cudnn:
+        torch.backends.cudnn.enabled = False
     video_paths = tuple(sorted(args.videos.glob("*.mp4")))
     annotation_paths = tuple(sorted(args.annotations.glob("*.txt")))
     if not video_paths:

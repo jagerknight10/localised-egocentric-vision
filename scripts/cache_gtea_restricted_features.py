@@ -25,13 +25,17 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", type=Path, default=Path("data/features_restricted"))
     parser.add_argument("--device", default="auto", choices=("auto", "cpu", "cuda", "mps"))
     parser.add_argument("--margin", type=int, default=16)
+    parser.add_argument("--stride", type=int, default=15)
     parser.add_argument("--batch-size", type=int, default=32)
+    parser.add_argument("--disable-cudnn", action="store_true")
     parser.add_argument("--video-name", help="Process one video filename, e.g. S1_Cheese_C1.mp4")
     parser.add_argument("--overwrite", action="store_true")
     return parser
 
 
 def run(args: argparse.Namespace) -> None:
+    if args.disable_cudnn:
+        torch.backends.cudnn.enabled = False
     label_paths = tuple(sorted(args.labels.glob("*.txt")))
     label_map = build_global_label_map(label_paths)
     masks = index_hand_masks(args.masks, margin=args.margin)
@@ -52,7 +56,10 @@ def run(args: argparse.Namespace) -> None:
         if output_path.exists() and not args.overwrite:
             print(f"skip {video_path.name}: cache exists")
             continue
-        selected_indices = np.array(sorted(available), dtype=np.int64)
+        selected_indices = np.array(
+            [index for index in sorted(available) if index % args.stride == 0],
+            dtype=np.int64,
+        )
         if selected_indices.size == 0:
             print(f"skip {video_path.name}: no exact decoded mask frames")
             continue
@@ -66,6 +73,7 @@ def run(args: argparse.Namespace) -> None:
         save_feature_cache(output_path, features, labels, selected_indices, {
             "video_id": video_path.stem,
             "fps": metadata.fps,
+            "stride": args.stride,
             "model_id": extractor.model_id,
             "feature_dim": features.shape[1],
             "label_map": label_map,

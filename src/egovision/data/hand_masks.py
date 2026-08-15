@@ -44,7 +44,12 @@ def index_hand_masks(annotation_dir: str | Path, margin: int = 16) -> dict[str, 
     for path in Path(annotation_dir).glob("*.xml"):
         name = path.stem.lower()
         video_key, _, frame_text = name.rpartition("_")
-        mask = parse_hand_mask(path, margin=margin)
+        try:
+            mask = parse_hand_mask(path, margin=margin)
+        except ValueError as error:
+            if "No hand polygon points" not in str(error):
+                raise
+            continue
         index.setdefault(video_key, {})[int(frame_text)] = mask
     return index
 

@@ -10,7 +10,7 @@ from .annotations import (
 )
 from .cached import CachedFrameDataset, CachedWindowDataset, split_by_subject, subject_id_from_cache
 from .hand_masks import HandMask, crop_frame, index_hand_masks, parse_hand_mask
-from .video import SampledVideo, VideoMetadata, read_video, sample_frame_indices
+from .video import SampledVideo, VideoMetadata, read_video, read_video_at_indices, sample_frame_indices
 
 __all__ = [
     "ActionSegment",
@@ -30,5 +30,6 @@ __all__ = [
     "index_hand_masks",
     "parse_hand_mask",
     "read_video",
+    "read_video_at_indices",
     "sample_frame_indices",
 ]

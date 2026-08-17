@@ -92,3 +92,14 @@ outputs/causal_transformer/
 ```
 
 Generated data, feature caches, model weights, and experiment outputs should remain outside Git unless explicitly needed as small documentation artifacts.
+
+## Citations and acknowledgements
+
+
+> Yin Li, Miao Liu, and James M. Rehg. “In the Eye of the Beholder: Joint Learning of Gaze and Actions in First Person Video.” ECCV, 2018. [Paper](https://eccv2018.org/openaccess/content_ECCV_2018/papers/Yin_Li_In_the_Eye_ECCV_2018_paper.pdf)
+
+This project uses Meta AI’s pretrained DINOv2-small model (`facebook/dinov2-small`) as a frozen visual feature extractor. Please cite:
+
+> Maxime Oquab et al. “DINOv2: Learning Robust Visual Features without Supervision.” arXiv, 2023. [Paper](https://arxiv.org/abs/2304.07193)
+
+The implementation also relies on PyTorch, torchvision, OpenCV, Pillow, NumPy, scikit-learn, and Hugging Face model-loading utilities. Their original authors, licenses, and attribution requirements should be respected.

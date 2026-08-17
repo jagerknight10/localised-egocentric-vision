@@ -3,10 +3,12 @@ from pathlib import Path
 import pytest
 
 from egovision.data.egtea import (
+    EGTEAActionAnnotation,
     parse_action_classes_csv,
     parse_action_labels_csv,
     parse_clip_metadata,
     parse_split_file,
+    build_clip_manifest,
     validate_split_classes,
 )
 
@@ -49,3 +51,22 @@ def test_parse_trimmed_clip_metadata() -> None:
 def test_invalid_trimmed_clip_metadata_is_rejected() -> None:
     with pytest.raises(ValueError, match="Invalid EGTEA trimmed-clip"):
         parse_clip_metadata("not-a-trimmed-clip.mp4")
+
+
+def test_build_clip_manifest_joins_by_prefix_and_interval(tmp_path: Path) -> None:
+    annotations = (
+        EGTEAActionAnnotation(
+            clip_id=1,
+            clip_prefix="P01-R01-PastaSalad-100-200",
+            video_session="P01-R01-PastaSalad",
+            start_ms=100,
+            end_ms=200,
+            action_name="Cut tomato",
+            verb="Cut",
+            nouns=("tomato",),
+        ),
+    )
+    clips = (tmp_path / "P01-R01-PastaSalad-100-200-F0001-F0008.mp4",)
+    clips[0].touch()
+    manifest = build_clip_manifest(clips, annotations)
+    assert manifest[0].annotation.action_name == "Cut tomato"

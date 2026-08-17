@@ -58,6 +58,15 @@ class EGTEAClipMetadata:
     end_frame: int
 
 
+@dataclass(frozen=True)
+class EGTEAClipRecord:
+    """A trimmed clip joined to its official action annotation."""
+
+    path: Path
+    metadata: EGTEAClipMetadata
+    annotation: EGTEAActionAnnotation
+
+
 _CLIP_PATTERN = re.compile(
     r"^(?P<session>.+)-(?P<start_ms>\d+)-(?P<end_ms>\d+)"
     r"-F(?P<start_frame>\d+)-F(?P<end_frame>\d+)$"
@@ -170,3 +179,64 @@ def validate_split_classes(
     unknown = {item.action_id for item in records} - valid_ids
     if unknown:
         raise ValueError(f"Split contains unknown action IDs: {sorted(unknown)}")
+
+
+def build_clip_manifest(
+    clip_paths: tuple[str | Path, ...],
+    annotations: tuple[EGTEAActionAnnotation, ...],
+) -> tuple[EGTEAClipRecord, ...]:
+    """Join trimmed clip filenames to official action annotations.
+
+    The join key is the filename prefix containing the session and original
+    millisecond interval. Frame-number fields are retained as metadata but
+    are not used as the annotation join key.
+    """
+    by_prefix: dict[str, EGTEAActionAnnotation] = {}
+    for annotation in annotations:
+        if annotation.clip_prefix in by_prefix:
+            raise ValueError(f"Duplicate annotation clip prefix: {annotation.clip_prefix}")
+        by_prefix[annotation.clip_prefix] = annotation
+
+    records: list[EGTEAClipRecord] = []
+    seen: set[str] = set()
+    for raw_path in sorted((Path(path) for path in clip_paths), key=lambda item: str(item)):
+        metadata = parse_clip_metadata(raw_path.name)
+        if metadata.clip_name in seen:
+            raise ValueError(f"Duplicate clip filename: {metadata.clip_name}")
+        seen.add(metadata.clip_name)
+        prefix = metadata.clip_name.rsplit("-F", 2)[0]
+        annotation = by_prefix.get(prefix)
+        if annotation is None:
+            raise ValueError(f"No action annotation for trimmed clip: {metadata.clip_name}")
+        if annotation.video_session != metadata.video_session:
+            raise ValueError(f"Session mismatch for trimmed clip: {metadata.clip_name}")
+        if (annotation.start_ms, annotation.end_ms) != (metadata.start_ms, metadata.end_ms):
+            raise ValueError(f"Time interval mismatch for trimmed clip: {metadata.clip_name}")
+        records.append(EGTEAClipRecord(raw_path, metadata, annotation))
+    if not records:
+        raise ValueError("No trimmed clips were provided")
+    return tuple(records)
+
+
+def action_ids_by_name(classes: tuple[EGTEAActionClass, ...]) -> dict[str, int]:
+    """Return the official zero-based action ID for each action name."""
+    result: dict[str, int] = {}
+    for item in classes:
+        if item.action_name in result:
+            raise ValueError(f"Duplicate action name: {item.action_name}")
+        result[item.action_name] = item.action_id
+    return result
+
+
+def cache_paths_for_split(
+    records: tuple[EGTEASplitRecord, ...],
+    cache_dir: str | Path,
+) -> tuple[Path, ...]:
+    """Resolve official split clip names to generated feature-cache paths."""
+    root = Path(cache_dir)
+    paths = tuple(root / f"{record.clip_name}.pt" for record in records)
+    missing = tuple(path for path in paths if not path.exists())
+    if missing:
+        preview = ", ".join(str(path.name) for path in missing[:3])
+        raise FileNotFoundError(f"Missing {len(missing)} split caches, including: {preview}")
+    return paths

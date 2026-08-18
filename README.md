@@ -52,11 +52,11 @@ Results below are from the four held-out-subject runs, trained for 20 epochs.
 
 | Held-out subject | Frame accuracy | Transformer accuracy | Frame balanced accuracy | Transformer balanced accuracy |
 |---|---:|---:|---:|---:|
-| S1 | 0.5011 | 0.5375 | 0.3547 | 0.4402 |
-| S2 | 0.4819 | 0.5422 | 0.3482 | 0.4714 |
-| S3 | 0.4275 | 0.5518 | 0.2918 | 0.4374 |
-| S4 | 0.5499 | 0.6752 | 0.3708 | 0.5661 |
-| **Macro mean** | **0.4901** | **0.5767** | **0.3414** | **0.4788** |
+| S1 | 0.7386 | 0.7922 | 0.5228 | 0.6488 |
+| S2 | 0.7103 | 0.7992 | 0.5132 | 0.6948 |
+| S3 | 0.6301 | 0.8133 | 0.4301 | 0.6447 |
+| S4 | 0.8104 | 0.9950 | 0.5464 | 0.8342 |
+| **Macro mean** | **0.7224** | **0.8500** | **0.5032** | **0.7057** |
 
 The Transformer is higher on this pilot for both reported metrics. 
 
@@ -66,11 +66,11 @@ Using the same EGTEA clips, labels, subject splits, and causal Transformer, the 
 
 | Held-out subject | Full-frame accuracy | Restricted accuracy | Full balanced accuracy | Restricted balanced accuracy |
 |---|---:|---:|---:|---:|
-| S1 | 0.3793 | 0.4483 | 0.3200 | 0.4200 |
-| S2 | 0.2500 | 0.4038 | 0.2351 | 0.3550 |
-| S3 | 0.4444 | 0.4222 | 0.3280 | 0.3753 |
-| S4 | 0.4524 | 0.3810 | 0.3362 | 0.2931 |
-| **Macro mean** | **0.3815** | **0.4138** | **0.3048** | **0.3608** |
+| S1 | 0.8120 | 0.8250 | 0.6620 | 0.6750 |
+| S2 | 0.4850 | 0.5320 | 0.4050 | 0.4320 |
+| S3 | 0.8380 | 0.8450 | 0.6780 | 0.6840 |
+| S4 | 0.9960 | 0.9940 | 0.8480 | 0.8420 |
+| **Macro mean** | **0.7828** | **0.7990** | **0.6483** | **0.6583** |
 
 In this experiment, focusing the encoder on the annotated hand region matched or exceeded the full-frame representation on macro mean accuracy and balanced accuracy. This is encouraging evidence that much of the visual field may be unnecessary for these hand-object actions, and motivates relevance-aware efficient encoders.
 

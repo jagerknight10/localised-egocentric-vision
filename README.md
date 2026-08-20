@@ -48,7 +48,7 @@ These mechanisms address different failure modes: corrupted artifacts, accidenta
 
 ## Current results
 
-Results below are from the four held-out-subject runs, trained for 25000 epochs.
+Results below are from the four held-out-subject runs, trained for 250 epochs.
 
 | Held-out subject | Frame accuracy | Transformer accuracy | Frame balanced accuracy | Transformer balanced accuracy |
 |---|---:|---:|---:|---:|

@@ -5,7 +5,7 @@ The current experiment uses the EGTEA dataset and asks:
 
 > Does temporal context improve action recognition compared with classifying each sampled frame independently?
 
-The model used is a causal transformer: its prediction at `t` may use frames up to `t - 1`, but never future frames.
+The model used is a masked causal transformer: its prediction at `t` may use frames up to `t - 1`, but never future frames.
 
 ## Current pipeline
 

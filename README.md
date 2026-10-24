@@ -5,7 +5,6 @@ The current experiment uses the EGTEA dataset. We are trying to understand the f
 
 > Does focused temporal context improve action recognition compared with classifying each sampled frame independently?
 
-
 ## Project page
 
 The project page is published at <https://jagerknight10.github.io/localised-egocentric-vision/>

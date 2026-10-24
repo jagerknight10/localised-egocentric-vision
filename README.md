@@ -1,9 +1,9 @@
 # Localized Egocentric Vision
 
 This repository studies efficient, causal action recognition in egocentric videos.
-The current experiment uses the EGTEA dataset and asks:
+The current experiment uses the EGTEA dataset. I am trying to understand the following.
 
-> Does temporal context improve action recognition compared with classifying each sampled frame independently?
+> Does focused temporal context improve action recognition compared with classifying each sampled frame independently?
 
 The model used is a masked causal transformer: its prediction at `t` may use frames up to `t - 1`, but never future frames.
 

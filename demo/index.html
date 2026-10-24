@@ -3,47 +3,94 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#080b14">
-  <title>EgoFocus — Localized Egocentric Vision</title>
+  <meta name="theme-color" content="#fbfbfa">
+  <title>Localized Egocentric Vision</title>
   <style>
-    :root{--bg:#080b14;--panel:#101728;--line:rgba(165,186,255,.16);--ink:#eef4ff;--muted:#9aa8c4;--cyan:#38e7ff;--violet:#9d7cff;--lime:#b8ff5a;--coral:#ff7a9d}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% -5%,#142c55 0,transparent 30%),radial-gradient(circle at 92% 14%,#39215a 0,transparent 25%),var(--bg);color:var(--ink);font:16px/1.5 Inter,ui-sans-serif,system-ui,sans-serif;overflow-x:hidden}a{color:inherit}main{max-width:1240px;margin:auto;padding:28px 24px 72px}.nav{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted)}.brand{font-weight:800;letter-spacing:.08em;color:var(--ink)}.brand i{color:var(--cyan);font-style:normal}.pill{padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(12,17,32,.7)}.hero{padding:82px 0 42px;display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:var(--cyan);font-weight:800}.hero h1{font-size:clamp(3.3rem,7vw,6.7rem);line-height:.92;letter-spacing:-.075em;margin:14px 0 23px}.hero h1 em{font-style:normal;background:linear-gradient(100deg,var(--cyan),var(--violet));-webkit-background-clip:text;color:transparent}.lead{font-size:19px;color:var(--muted);max-width:610px}.button{display:inline-flex;margin-top:28px;gap:9px;align-items:center;border:0;border-radius:999px;padding:13px 18px;background:var(--lime);color:#101807;font-weight:800;text-decoration:none;cursor:pointer}.button:hover{transform:translateY(-1px)}.video-frame{position:relative;width:min(520px,94vw);margin:auto;overflow:hidden;border-radius:18px;border:1px solid rgba(56,231,255,.45);background:#050810;box-shadow:0 24px 64px rgba(0,0,0,.42),0 0 45px rgba(56,231,255,.16)}.video-frame video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.video-frame span{position:absolute;right:12px;bottom:12px;padding:5px 8px;border-radius:5px;background:rgba(3,7,16,.76);border:1px solid var(--line);font-size:10px;letter-spacing:.09em;color:var(--muted)}.results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 92px}.stat{padding:22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(130deg,rgba(27,40,71,.8),rgba(16,23,40,.7))}.stat b{display:block;font-size:28px;letter-spacing:-.04em}.stat small{display:block;color:var(--muted);margin-top:5px}.section-label{color:var(--cyan);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.16em}.showcase{padding:28px;border:1px solid var(--line);background:rgba(10,15,28,.68);border-radius:24px;box-shadow:0 24px 70px rgba(0,0,0,.23)}.show-head{display:flex;justify-content:space-between;gap:14px;align-items:end;margin-bottom:24px}.show-head h2{font-size:32px;letter-spacing:-.04em;margin:5px 0 0}.controls{display:flex;gap:7px;flex-wrap:wrap}.control{padding:8px 11px;border-radius:9px;background:transparent;border:1px solid var(--line);color:var(--muted);cursor:pointer}.control.active{color:#06101a;background:var(--cyan);border-color:var(--cyan);font-weight:800}.scene{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.view{min-height:350px;background:#050810;border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative}.camera{position:absolute;inset:0;background:linear-gradient(125deg,rgba(66,99,99,.6),transparent 38%),linear-gradient(0deg,#241c19 0 20%,transparent 20%),linear-gradient(112deg,transparent 34%,#8c4b39 34% 39%,transparent 39%),linear-gradient(64deg,transparent 69%,#634336 69% 74%,transparent 74%),#34404c}.camera:after{content:"";position:absolute;left:13%;bottom:18%;width:62%;height:28%;background:linear-gradient(145deg,#c58862,#8a4938);border-radius:45% 45% 18% 30%;transform:rotate(-9deg);box-shadow:0 0 0 11px rgba(255,255,255,.04)}.focus{position:absolute;left:30%;bottom:22%;width:36%;height:34%;border:2px solid var(--lime);border-radius:8px;box-shadow:0 0 0 999px rgba(0,0,0,.33),0 0 17px rgba(184,255,90,.55);animation:track 4s ease-in-out infinite}.focus:after{content:"HAND + OBJECT";position:absolute;top:-24px;left:0;color:var(--lime);font:700 11px/1 ui-sans-serif;letter-spacing:.1em;white-space:nowrap}@keyframes track{50%{transform:translate(19px,-10px)}}.badge{position:absolute;top:13px;left:13px;padding:6px 9px;border-radius:7px;background:rgba(3,7,16,.73);border:1px solid var(--line);font-size:11px;letter-spacing:.1em}.focus-view{background:radial-gradient(circle at 46% 54%,#dca36f 0 13%,#7d3e2c 14% 22%,#14110f 23% 42%,#090a0f 43%)}.focus-view:before{content:"";position:absolute;inset:12%;border:1px solid rgba(56,231,255,.24);border-radius:12px;background:repeating-linear-gradient(90deg,transparent 0 32px,rgba(56,231,255,.08) 33px 34px),repeating-linear-gradient(0deg,transparent 0 32px,rgba(56,231,255,.08) 33px 34px)}.focus-view:after{content:"384-D DINOv2 FEATURE";position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.13em;white-space:nowrap}.predictions{padding:17px}.prediction-title{font-size:12px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}.answer{font-size:37px;letter-spacing:-.06em;margin:4px 0 4px;color:var(--lime)}.confidence{color:var(--muted);font-size:14px}.bar{height:7px;background:#273146;border-radius:99px;overflow:hidden;margin:11px 0 19px}.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--lime));border-radius:99px;transition:width .45s}.timeline{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}.ticks{height:72px;display:flex;align-items:end;gap:3px}.ticks span{display:block;flex:1;border-radius:3px 3px 0 0;background:#303b59;transition:.4s}.ticks span.active{background:var(--cyan);box-shadow:0 0 12px rgba(56,231,255,.6)}.insight{display:flex;gap:11px;margin-top:14px;color:var(--muted);font-size:14px}.dot{width:10px;height:10px;margin-top:5px;border-radius:50%;background:var(--lime);flex:none}.method{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:54px}.step{padding:17px;border-top:2px solid var(--violet);background:rgba(25,34,56,.45)}.step strong{display:block;margin:7px 0;font-size:17px}.step p{margin:0;color:var(--muted);font-size:14px}.footer{border-top:1px solid var(--line);margin-top:68px;padding-top:20px;font-size:13px;color:var(--muted)}@media(max-width:760px){.hero,.scene{grid-template-columns:1fr}.hero{padding-top:55px;gap:25px}.results,.method{grid-template-columns:1fr}.show-head{align-items:start;flex-direction:column}.view{min-height:270px}.answer{font-size:31px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}</style>
+    :root{--ink:#202124;--muted:#5f6368;--line:#e1e4e8;--blue:#1769aa;--paper:#fff;--wash:#f7f8fa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 Arial,Helvetica,sans-serif}.page{max-width:1040px;margin:auto;padding:42px 30px 76px}.masthead{text-align:center;max-width:950px;margin:0 auto 34px}.masthead h1{font:400 clamp(2.15rem,5vw,3.8rem)/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0 0 16px}.subtitle{font-size:21px;color:var(--muted);margin:0 auto 15px;max-width:760px}.authors{font-size:17px;margin:0 0 5px}.authors a{color:var(--ink);text-decoration:none;border-bottom:1px solid #bbb}.affiliation{color:var(--muted);font-size:15px;margin-bottom:19px}.links{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.links a{display:inline-block;color:var(--blue);text-decoration:none;border:1px solid #cdd9e3;border-radius:4px;padding:7px 12px;font-size:14px}.links a:hover{background:#f1f7fb}.abstract{max-width:850px;margin:0 auto 38px;text-align:left}.abstract h2,.section h2{font:400 29px/1.2 Georgia,"Times New Roman",serif;margin:0 0 12px}.abstract p{margin:0;color:#333}.video-figure{margin:37px auto 43px;max-width:900px}.video-wrap{background:#111;border:1px solid #d7d7d7}.video-wrap video{display:block;width:100%;aspect-ratio:16/9;background:#111}.caption{font-size:13px;color:var(--muted);text-align:center;margin:9px auto 0;max-width:760px}.section{max-width:900px;margin:0 auto 44px}.section p{margin:0 0 14px}.method{border:1px solid var(--line);background:var(--wash);padding:22px 16px;margin-top:17px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}.method-step{padding:10px 15px;position:relative}.method-step:not(:last-child):after{content:"→";position:absolute;right:-9px;top:39%;color:#86909c;font-size:24px}.method-step strong{display:block;font-size:15px}.method-step span{display:block;font-size:13px;color:var(--muted);margin-top:3px}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}.table-wrap{overflow:auto}.results{border-collapse:collapse;width:100%;font-size:14px}.results th,.results td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:right}.results th:first-child,.results td:first-child{text-align:left}.results thead th{font-weight:600;border-top:2px solid #8d959e}.results tbody tr:last-child td{font-weight:700;border-bottom:2px solid #8d959e}.callout{background:#f4f8fb;border-left:4px solid var(--blue);padding:16px 18px;font-size:15px}.callout strong{display:block;margin-bottom:4px}.limits{background:#fafafa;border:1px solid var(--line);padding:18px 20px}.limits ul{margin:7px 0 0;padding-left:20px}.limits li{margin:5px 0}.footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:13px;text-align:center}.footer a{color:var(--blue)}@media(max-width:720px){.page{padding:30px 19px}.subtitle{font-size:18px}.result-grid{grid-template-columns:1fr}.method{grid-template-columns:1fr 1fr}.method-step:nth-child(2):after{display:none}.method-step:not(:last-child):after{right:-5px}}@media(max-width:440px){.method{grid-template-columns:1fr}.method-step:after{display:none!important}}
+  </style>
 </head>
 <body>
-  <main>
-    <nav class="nav"><span class="brand">EGO<i>FOCUS</i></span><span class="pill">Localized Egocentric Vision · Pilot results</span></nav>
-    <section class="hero">
-      <div><div class="eyebrow">Streaming action recognition</div><h1>See <em>less.</em><br>Understand more.</h1><p class="lead">A causal Transformer turns a first-person visual stream into action predictions—using only what it has seen so far.</p><a class="button" href="#demo">Explore the demo <span aria-hidden="true">↓</span></a></div>
-      <div class="video-frame"><video autoplay muted loop playsinline aria-label="Twelve second EgoFocus project reel"><source src="assets/egofocus-demo.mp4" type="video/mp4"></video><span>12-SECOND PROJECT REEL</span></div>
+  <main class="page">
+    <header class="masthead">
+      <h1>Localized Egocentric Vision</h1>
+      <p class="subtitle">Efficient causal action recognition from relevant visual context</p>
+      <p class="authors"><a href="https://github.com/jagerknight10">Anirudh Tirumalachari Narayanan</a></p>
+      <p class="affiliation">Project page</p>
+      <nav class="links" aria-label="Project links">
+        <a href="https://github.com/jagerknight10/localised-egocentric-vision">Code</a>
+        <a href="#video">Project video</a>
+        <a href="#results">Results</a>
+        <a href="#limitations">Limitations</a>
+      </nav>
+    </header>
+
+    <section class="abstract">
+      <h2>Abstract</h2>
+      <p>We study causal action recognition in egocentric videos: can a model use only visual evidence available up to the current moment to recognize an ongoing action? The project compares a frame-level linear baseline with a causal Transformer that receives a history of frozen DINOv2 visual features. It also evaluates an oracle restricted-input condition, where a hand-region annotation localizes the hand–object interaction before visual encoding. Across leave-one-subject-out pilot experiments on EGTEA, temporal context improves both macro accuracy and balanced accuracy over frame-level recognition.</p>
     </section>
-    <section class="results" aria-label="Key pilot results">
-      <article class="stat"><b>+12.8 pp</b><small>Macro accuracy with causal temporal context</small></article>
-      <article class="stat"><b>+20.3 pp</b><small>Balanced accuracy over a frame-only baseline</small></article>
-      <article class="stat"><b>73 actions</b><small>Observed action labels in the EGTEA annotation scan</small></article>
-    </section>
-    <section class="showcase" id="demo">
-      <div class="show-head"><div><div class="section-label">Interactive playback</div><h2>From pixels to prediction.</h2></div><div class="controls" role="group" aria-label="Demo setting"><button class="control active" data-mode="causal">Causal context</button><button class="control" data-mode="frame">Frame only</button><button class="control" data-mode="focus">Hand focused</button></div></div>
-      <div class="scene">
-        <div class="view" aria-label="Stylized egocentric visual input"><div class="camera"></div><div class="focus"></div><span class="badge">FIRST-PERSON INPUT</span></div>
-        <div class="view focus-view" aria-label="Localized hand object crop"><span class="badge">RELEVANT VISUAL FIELD</span></div>
+
+    <figure class="video-figure" id="video">
+      <div class="video-wrap">
+        <video controls muted loop playsinline preload="metadata" aria-label="Twelve second project overview video">
+          <source src="assets/egofocus-demo.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="assets/egofocus-demo.mp4">Download the project video</a>.
+        </video>
       </div>
-      <div class="predictions">
-        <div class="prediction-title">Current model prediction</div><div class="answer" id="action">peel cucumber</div><div class="confidence" id="confidence">94% confidence · causal model</div><div class="bar"><i id="bar"></i></div>
-        <div class="timeline"><div class="prediction-title">Context accumulated across sampled frames</div><div class="ticks" id="ticks"></div></div>
-        <div class="insight"><span class="dot"></span><span id="insight">The current prediction can use earlier frames, but never future frames.</span></div>
+      <figcaption class="caption"><strong>Project overview.</strong> A short visual summary of localized visual input, causal context, and pilot results. The animation is illustrative; reported aggregate metrics are from the evaluation described below.</figcaption>
+    </figure>
+
+    <section class="section">
+      <h2>Method</h2>
+      <p>Video frames are sampled deterministically every 15 frames. A frozen DINOv2-small encoder maps each sampled image to a cached 384-dimensional feature vector. The evaluated models receive the same features, labels, and subject-level split; only their temporal access differs.</p>
+      <div class="method" aria-label="Method pipeline">
+        <div class="method-step"><strong>Egocentric video</strong><span>sample every 15 frames</span></div>
+        <div class="method-step"><strong>Frozen DINOv2-small</strong><span>384-D visual feature</span></div>
+        <div class="method-step"><strong>Feature cache</strong><span>provenance-aware storage</span></div>
+        <div class="method-step"><strong>Action model</strong><span>frame baseline or causal Transformer</span></div>
       </div>
     </section>
-    <section class="method">
-      <article class="step"><div class="section-label">01</div><strong>Sample</strong><p>Every 15th video frame becomes an explicit temporal observation.</p></article>
-      <article class="step"><div class="section-label">02</div><strong>Represent</strong><p>Frozen DINOv2-small produces a cached 384-dimensional visual feature.</p></article>
-      <article class="step"><div class="section-label">03</div><strong>Remember</strong><p>A causal Transformer attends only to current and past representations.</p></article>
-      <article class="step"><div class="section-label">04</div><strong>Recognize</strong><p>One action label is produced at each time step for streaming use.</p></article>
+
+    <section class="section" id="results">
+      <h2>Pilot results</h2>
+      <div class="result-grid">
+        <div class="table-wrap">
+          <table class="results">
+            <thead><tr><th>Held-out subject</th><th>Frame acc.</th><th>Causal acc.</th><th>Frame bal. acc.</th><th>Causal bal. acc.</th></tr></thead>
+            <tbody>
+              <tr><td>S1</td><td>0.7386</td><td>0.7922</td><td>0.5228</td><td>0.6488</td></tr>
+              <tr><td>S2</td><td>0.7103</td><td>0.7992</td><td>0.5132</td><td>0.6948</td></tr>
+              <tr><td>S3</td><td>0.6301</td><td>0.8133</td><td>0.4301</td><td>0.6447</td></tr>
+              <tr><td>S4</td><td>0.8104</td><td>0.9950</td><td>0.5464</td><td>0.8342</td></tr>
+              <tr><td>Macro mean</td><td>0.7224</td><td>0.8500</td><td>0.5032</td><td>0.7057</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="callout">
+          <strong>Temporal context improves the pilot metrics.</strong>
+          Macro accuracy increases from 72.2% to 85.0% (+12.8 percentage points), while balanced accuracy increases from 50.3% to 70.6% (+20.3 percentage points).
+        </aside>
+      </div>
     </section>
-    <footer class="footer">Illustrative playback visual. Aggregate metrics shown above are reported pilot results from leave-one-subject-out evaluation. The hand-focused pathway uses oracle hand annotations and is presented as an analysis of relevant context, not an automatic detector.</footer>
+
+    <section class="section">
+      <h2>Localized visual input</h2>
+      <p>Using the same clips, labels, splits, and causal Transformer, the oracle hand-restricted representation obtains a macro mean accuracy of 79.9%, compared with 78.3% for its paired full-frame representation. This suggests that much of the visual field may be unnecessary for these hand–object actions, motivating relevance-aware visual encoders.</p>
+    </section>
+
+    <section class="section" id="limitations">
+      <h2>Limitations and scope</h2>
+      <div class="limits">
+        <ul>
+          <li>The restricted-input condition uses hand annotations as oracle inputs; it is not an automatic hand detector.</li>
+          <li>Results are pilot results from four held-out-subject runs and should not be read as a general benchmark claim.</li>
+          <li>The video is a project overview, not redistributed EGTEA footage or a clip-level inference visualization.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Implementation and reproducibility details are available in the <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub repository</a>.</p>
+    </footer>
   </main>
-  <script>
-    const config={causal:{action:"peel cucumber",confidence:"94% confidence · causal model",width:94,insight:"The current prediction can use earlier frames, but never future frames.",heights:[13,18,25,39,52,71,83,91,94,94,93,94]},frame:{action:"cut cucumber",confidence:"57% confidence · frame-only baseline",width:57,insight:"A single frame lacks motion and intent; the prediction is visibly less stable.",heights:[66,34,72,45,58,29,69,48,58,37,66,57]},focus:{action:"peel cucumber",confidence:"91% confidence · hand-focused causal model",width:91,insight:"The restricted representation keeps the hand–object interaction in view.",heights:[12,21,31,47,62,78,86,89,91,92,91,91]}};
-    const ticks=document.querySelector("#ticks"); for(let i=0;i<12;i++){const s=document.createElement("span");ticks.appendChild(s)}
-    const render=mode=>{const d=config[mode];document.querySelector("#action").textContent=d.action;document.querySelector("#confidence").textContent=d.confidence;document.querySelector("#bar").style.width=d.width+"%";document.querySelector("#insight").textContent=d.insight;[...ticks.children].forEach((el,i)=>{el.style.height=d.heights[i]+"%";el.classList.toggle("active",mode!=="frame"&&i>4)});document.querySelectorAll(".control").forEach(b=>b.classList.toggle("active",b.dataset.mode===mode))};document.querySelectorAll(".control").forEach(b=>b.addEventListener("click",()=>render(b.dataset.mode)));render("causal");
-  </script>
 </body>
 </html>

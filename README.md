@@ -1,13 +1,9 @@
 # Localized Egocentric Vision
 
 This repository studies efficient, causal action recognition in egocentric videos.
-The current experiment uses the EGTEA dataset. I am trying to understand the following.
+The current experiment uses the EGTEA dataset. We are trying to understand the following.
 
 > Does focused temporal context improve action recognition compared with classifying each sampled frame independently?
-
-## Brief
-
-**EgoFocus** is a self-contained, visual companion to this project: an animated walkthrough of localized visual input, causal temporal context, and the reported results.
 
 ## Project page
 
@@ -15,16 +11,13 @@ The project page is published at <https://jagerknight10.github.io/localised-egoc
 from [`demo/`](demo/) by the GitHub Pages workflow
 [`.github/workflows/deploy-demo.yml`](.github/workflows/deploy-demo.yml).
 
-The page presents the EgoFocus method: a learned spatial-importance module
-localizes the hand-object region of each egocentric frame, the localized
-crops form a compact causal stream for a two-layer, four-head causal
-Transformer, and a transition head scores action boundaries. It includes a
-real GTEA cooking clip with the dataset's own hand-mask boxes, localized
-crops, action labels, and a causal temporal strip (no model predictions are
-shown), the architecture figure, and the results tables.
+Its hero demo is a **real GTEA cooking clip** with the dataset's own
+hand-mask boxes, localized crops, and action labels, plus a causal
+temporal strip that contains only past and current evidence. No model
+predictions are shown. Regenerate the assets with
+`python3 scripts/make_real_cooking_demo_assets.py` (requires the GTEA raw
+video and hand-mask annotations).
 
-Regenerate the demo assets with `python3 scripts/make_real_cooking_demo_assets.py`
-(requires the GTEA raw video and hand-mask annotations).
 
 The model used is a masked causal transformer: its prediction at `t` may use frames up to `t - 1`, but never future frames.
 

@@ -98,7 +98,6 @@ outputs/frame_baseline/
 outputs/causal_transformer/
 ```
 
-Generated data, feature caches, model weights, and experiment outputs should remain outside Git unless explicitly needed as small documentation artifacts.
 
 ## Citations and acknowledgements
 

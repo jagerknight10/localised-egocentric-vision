@@ -6,90 +6,83 @@
   <meta name="theme-color" content="#fbfbfa">
   <title>Localized Egocentric Vision</title>
   <style>
-    :root{--ink:#202124;--muted:#5f6368;--line:#e1e4e8;--blue:#1769aa;--paper:#fff;--wash:#f7f8fa}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 Arial,Helvetica,sans-serif}.page{max-width:1040px;margin:auto;padding:42px 30px 76px}.masthead{text-align:center;max-width:950px;margin:0 auto 34px}.masthead h1{font:400 clamp(2.15rem,5vw,3.8rem)/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0 0 16px}.subtitle{font-size:21px;color:var(--muted);margin:0 auto 15px;max-width:760px}.authors{font-size:17px;margin:0 0 5px}.authors a{color:var(--ink);text-decoration:none;border-bottom:1px solid #bbb}.affiliation{color:var(--muted);font-size:15px;margin-bottom:19px}.links{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.links a{display:inline-block;color:var(--blue);text-decoration:none;border:1px solid #cdd9e3;border-radius:4px;padding:7px 12px;font-size:14px}.links a:hover{background:#f1f7fb}.abstract{max-width:850px;margin:0 auto 38px;text-align:left}.abstract h2,.section h2{font:400 29px/1.2 Georgia,"Times New Roman",serif;margin:0 0 12px}.abstract p{margin:0;color:#333}.video-figure{margin:37px auto 43px;max-width:900px}.video-wrap{background:#111;border:1px solid #d7d7d7}.video-wrap video{display:block;width:100%;aspect-ratio:16/9;background:#111}.caption{font-size:13px;color:var(--muted);text-align:center;margin:9px auto 0;max-width:760px}.section{max-width:900px;margin:0 auto 44px}.section p{margin:0 0 14px}.method{border:1px solid var(--line);background:var(--wash);padding:22px 16px;margin-top:17px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}.method-step{padding:10px 15px;position:relative}.method-step:not(:last-child):after{content:"→";position:absolute;right:-9px;top:39%;color:#86909c;font-size:24px}.method-step strong{display:block;font-size:15px}.method-step span{display:block;font-size:13px;color:var(--muted);margin-top:3px}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}.table-wrap{overflow:auto}.results{border-collapse:collapse;width:100%;font-size:14px}.results th,.results td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:right}.results th:first-child,.results td:first-child{text-align:left}.results thead th{font-weight:600;border-top:2px solid #8d959e}.results tbody tr:last-child td{font-weight:700;border-bottom:2px solid #8d959e}.callout{background:#f4f8fb;border-left:4px solid var(--blue);padding:16px 18px;font-size:15px}.callout strong{display:block;margin-bottom:4px}.limits{background:#fafafa;border:1px solid var(--line);padding:18px 20px}.limits ul{margin:7px 0 0;padding-left:20px}.limits li{margin:5px 0}.footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:13px;text-align:center}.footer a{color:var(--blue)}@media(max-width:720px){.page{padding:30px 19px}.subtitle{font-size:18px}.result-grid{grid-template-columns:1fr}.method{grid-template-columns:1fr 1fr}.method-step:nth-child(2):after{display:none}.method-step:not(:last-child):after{right:-5px}}@media(max-width:440px){.method{grid-template-columns:1fr}.method-step:after{display:none!important}}
+    :root{--ink:#202124;--muted:#5f6368;--line:#e1e4e8;--blue:#1769aa;--paper:#fff;--wash:#f7f8fa}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 Arial,Helvetica,sans-serif}
+    .page{max-width:1040px;margin:auto;padding:42px 30px 76px}
+    .masthead{text-align:center;max-width:950px;margin:0 auto 34px}
+    .masthead h1{font:400 clamp(2.15rem,5vw,3.8rem)/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0 0 16px}
+    .authors{font-size:17px;margin:0 0 5px}
+    .authors a{color:var(--ink);text-decoration:none;border-bottom:1px solid #bbb}
+    .affiliation{color:var(--muted);font-size:15px;margin-bottom:19px}
+    .links{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+    .links a{display:inline-block;color:var(--blue);text-decoration:none;border:1px solid #cdd9e3;border-radius:4px;padding:7px 12px;font-size:14px}
+    .links a:hover{background:#f1f7fb}
+    .abstract{max-width:850px;margin:0 auto 38px;text-align:left}
+    .abstract h2,.section h2{font:400 29px/1.2 Georgia,"Times New Roman",serif;margin:0 0 12px}
+    .abstract p{margin:0;color:#333}
+    .video-figure{margin:37px auto 43px;max-width:940px}
+    .video-wrap{background:#111;border:1px solid #d7d7d7}
+    .video-wrap video{display:block;width:100%;aspect-ratio:16/9;background:#111}
+    .caption{font-size:13px;color:var(--muted);text-align:center;margin:9px auto 0;max-width:800px}
+    .section{max-width:900px;margin:0 auto 44px}
+    .section p{margin:0 0 14px}
+    .method{border:1px solid var(--line);background:var(--wash);padding:22px 16px;margin-top:17px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
+    .method-step{padding:10px 15px;position:relative}
+    .method-step:not(:last-child):after{content:"→";position:absolute;right:-9px;top:39%;color:#86909c;font-size:24px}
+    .method-step strong{display:block;font-size:15px}
+    .method-step span{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+    .footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:13px;text-align:center}
+    .footer a{color:var(--blue)}
+    @media(max-width:720px){.page{padding:30px 19px}.method{grid-template-columns:1fr 1fr}.method-step:nth-child(2):after{display:none}.method-step:not(:last-child):after{right:-5px}}
+    @media(max-width:440px){.method{grid-template-columns:1fr}.method-step:after{display:none!important}}
   </style>
 </head>
 <body>
   <main class="page">
     <header class="masthead">
       <h1>Localized Egocentric Vision</h1>
-      <p class="subtitle">Efficient causal action recognition from relevant visual context</p>
       <p class="authors"><a href="https://github.com/jagerknight10">Anirudh Tirumalachari Narayanan</a></p>
-      <p class="affiliation">Project page</p>
+      <p class="affiliation">Research project page</p>
       <nav class="links" aria-label="Project links">
+        <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub</a>
         <a href="https://github.com/jagerknight10/localised-egocentric-vision">Code</a>
-        <a href="#video">Project video</a>
-        <a href="#results">Results</a>
-        <a href="#limitations">Limitations</a>
+        <a href="#video">Demo video</a>
+        <a href="#stream">Method</a>
       </nav>
     </header>
 
     <section class="abstract">
       <h2>Abstract</h2>
-      <p>We study causal action recognition in egocentric videos: can a model use only visual evidence available up to the current moment to recognize an ongoing action? The project compares a frame-level linear baseline with a causal Transformer that receives a history of frozen DINOv2 visual features. It also evaluates an oracle restricted-input condition, where a hand-region annotation localizes the hand–object interaction before visual encoding. Across leave-one-subject-out pilot experiments on EGTEA, temporal context improves both macro accuracy and balanced accuracy over frame-level recognition.</p>
+      <p>Localized Egocentric Vision studies causal action recognition from a compact, task-relevant visual stream. Rather than processing every pixel of the full egocentric frame at every moment, the approach dynamically allocates visual attention to the hand–object regions that matter for the ongoing task. This localized stream reduces the effective context space while retaining the temporal transitions needed to distinguish and define actions. At each moment, recognition is based only on visual evidence available up to that time.</p>
     </section>
 
     <figure class="video-figure" id="video">
       <div class="video-wrap">
-        <video controls muted loop playsinline preload="metadata" aria-label="Twelve second project overview video">
-          <source src="assets/egofocus-demo.mp4" type="video/mp4">
-          Your browser does not support embedded video. <a href="assets/egofocus-demo.mp4">Download the project video</a>.
+        <video controls autoplay muted loop playsinline preload="metadata" aria-label="Real egocentric cooking video with localized stream">
+          <source src="assets/real-cooking/cooking-localized-stream.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="assets/real-cooking/cooking-localized-stream.mp4">Download the demo video</a>.
         </video>
       </div>
-      <figcaption class="caption"><strong>Project overview.</strong> A short visual summary of localized visual input, causal context, and pilot results. The animation is illustrative; reported aggregate metrics are from the evaluation described below.</figcaption>
+      <figcaption class="caption"><strong>Real egocentric cooking video.</strong> The localized stream follows annotated hand–object evidence, while the temporal context contains only observations available up to the current moment.</figcaption>
     </figure>
 
-    <section class="section">
-      <h2>Method</h2>
-      <p>Video frames are sampled deterministically every 15 frames. A frozen DINOv2-small encoder maps each sampled image to a cached 384-dimensional feature vector. The evaluated models receive the same features, labels, and subject-level split; only their temporal access differs.</p>
+    <section class="section" id="stream">
+      <h2>Localized causal stream</h2>
+      <p>Each egocentric frame is reduced to the hand–object region that is relevant to the ongoing task. This localized crop carries the visual evidence for the current action while discarding the surrounding scene, so the model reasons over a compact visual history rather than full frames.</p>
+      <p>Action boundaries are defined by temporal transitions: one action ends and another begins when the localized evidence changes. Because the stream is causal, the representation at any moment contains only past and current observations — the future is not available, mirroring the setting in which a system must recognize an action while it is still unfolding.</p>
       <div class="method" aria-label="Method pipeline">
-        <div class="method-step"><strong>Egocentric video</strong><span>sample every 15 frames</span></div>
-        <div class="method-step"><strong>Frozen DINOv2-small</strong><span>384-D visual feature</span></div>
-        <div class="method-step"><strong>Feature cache</strong><span>provenance-aware storage</span></div>
-        <div class="method-step"><strong>Action model</strong><span>frame baseline or causal Transformer</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="results">
-      <h2>Pilot results</h2>
-      <div class="result-grid">
-        <div class="table-wrap">
-          <table class="results">
-            <thead><tr><th>Held-out subject</th><th>Frame acc.</th><th>Causal acc.</th><th>Frame bal. acc.</th><th>Causal bal. acc.</th></tr></thead>
-            <tbody>
-              <tr><td>S1</td><td>0.7386</td><td>0.7922</td><td>0.5228</td><td>0.6488</td></tr>
-              <tr><td>S2</td><td>0.7103</td><td>0.7992</td><td>0.5132</td><td>0.6948</td></tr>
-              <tr><td>S3</td><td>0.6301</td><td>0.8133</td><td>0.4301</td><td>0.6447</td></tr>
-              <tr><td>S4</td><td>0.8104</td><td>0.9950</td><td>0.5464</td><td>0.8342</td></tr>
-              <tr><td>Macro mean</td><td>0.7224</td><td>0.8500</td><td>0.5032</td><td>0.7057</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <aside class="callout">
-          <strong>Temporal context improves the pilot metrics.</strong>
-          Macro accuracy increases from 72.2% to 85.0% (+12.8 percentage points), while balanced accuracy increases from 50.3% to 70.6% (+20.3 percentage points).
-        </aside>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Localized visual input</h2>
-      <p>Using the same clips, labels, splits, and causal Transformer, the oracle hand-restricted representation obtains a macro mean accuracy of 79.9%, compared with 78.3% for its paired full-frame representation. This suggests that much of the visual field may be unnecessary for these hand–object actions, motivating relevance-aware visual encoders.</p>
-    </section>
-
-    <section class="section" id="limitations">
-      <h2>Limitations and scope</h2>
-      <div class="limits">
-        <ul>
-          <li>The restricted-input condition uses hand annotations as oracle inputs; it is not an automatic hand detector.</li>
-          <li>Results are pilot results from four held-out-subject runs and should not be read as a general benchmark claim.</li>
-          <li>The video is a project overview, not redistributed EGTEA footage or a clip-level inference visualization.</li>
-        </ul>
+        <div class="method-step"><strong>Full egocentric frame</strong><span>raw first-person view</span></div>
+        <div class="method-step"><strong>Task-relevant localization</strong><span>hand–object region only</span></div>
+        <div class="method-step"><strong>Compact visual history</strong><span>past and current crops only</span></div>
+        <div class="method-step"><strong>Causal action recognition</strong><span>no access to future frames</span></div>
       </div>
     </section>
 
     <footer class="footer">
-      <p>Implementation and reproducibility details are available in the <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub repository</a>.</p>
+      <p>Demo video, bounding boxes, and action labels use the GTEA dataset (Li, Liu &amp; Rehg, “In the Eye of the Beholder: Joint Learning of Gaze and Actions in First Person Video,” ECCV 2018). Boxes and crops derive from its hand-mask annotations; all on-screen labels are dataset annotations, not model predictions.</p>
+      <p>Implementation and details are available in the <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub repository</a>.</p>
     </footer>
   </main>
 </body>

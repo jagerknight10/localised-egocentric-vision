@@ -1,4 +1,4 @@
-name: Deploy EgoFocus to GitHub Pages
+name: Deploy project page to GitHub Pages
 
 on:
   push:

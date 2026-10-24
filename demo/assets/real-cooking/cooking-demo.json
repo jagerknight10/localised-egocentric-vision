@@ -1,0 +1,2064 @@
+{
+  "source_clip_identifier": "GTEA:S1_Cheese_C1",
+  "source_video": "GTEA raw video S1_Cheese_C1.mp4 (720x404 @ 15 fps)",
+  "clip_start_frame": 6,
+  "clip_end_frame": 226,
+  "clip_frame_count": 221,
+  "clip_duration_seconds": 14.7333,
+  "fps": 15.0,
+  "original_dimensions": [
+    720,
+    404
+  ],
+  "xml_frame_ids_used": [
+    20,
+    60,
+    100,
+    140,
+    180
+  ],
+  "xml_all_anchor_frames_in_clip": [
+    20,
+    60,
+    100,
+    140,
+    180
+  ],
+  "frame_numbering": "Original 1-based GTEA frame numbers are preserved in all metadata. XML frame N aligns with MP4 decoder index N-1 (verified by pixel diff against the dataset reference images).",
+  "pixel_size_adjustment": "XML canvas is 720x405 (rows 0-404); decoded video is 720x404 (rows 0-403). Annotation row 404 does not exist in the video, so bottom box coordinates are clamped to row 403 (up to a 2-pixel vertical adjustment on the bottom edge only).",
+  "annotation_policy": {
+    "density": "Hand-mask XML exists only every 40 original frames; 5 anchors (20, 60, 100, 140, 180) fall inside the clip.",
+    "interpolation": "Per-corner linear interpolation of each hand bounding box between adjacent anchors; hold the nearest anchor outside the anchor range; clamp to the decoded video size.",
+    "box_definition": "Union of the annotated hand boxes (left and right hand) at each frame; this is the task-relevant region.",
+    "anchors_outside_clip": "Clip frames 6-19 hold anchor 20; frames 181-226 hold anchor 180."
+  },
+  "boxes_per_rendered_frame": [
+    {
+      "frame": 6,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 7,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 8,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 9,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 10,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 11,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 12,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 13,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 14,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 15,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 16,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 17,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 18,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 19,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 20,
+      "box_xyxy": [
+        239,
+        305,
+        413,
+        403
+      ]
+    },
+    {
+      "frame": 21,
+      "box_xyxy": [
+        238,
+        304,
+        419,
+        403
+      ]
+    },
+    {
+      "frame": 22,
+      "box_xyxy": [
+        238,
+        303,
+        424,
+        403
+      ]
+    },
+    {
+      "frame": 23,
+      "box_xyxy": [
+        237,
+        302,
+        430,
+        403
+      ]
+    },
+    {
+      "frame": 24,
+      "box_xyxy": [
+        237,
+        301,
+        436,
+        403
+      ]
+    },
+    {
+      "frame": 25,
+      "box_xyxy": [
+        236,
+        300,
+        442,
+        403
+      ]
+    },
+    {
+      "frame": 26,
+      "box_xyxy": [
+        236,
+        299,
+        448,
+        403
+      ]
+    },
+    {
+      "frame": 27,
+      "box_xyxy": [
+        235,
+        298,
+        453,
+        403
+      ]
+    },
+    {
+      "frame": 28,
+      "box_xyxy": [
+        234,
+        297,
+        459,
+        403
+      ]
+    },
+    {
+      "frame": 29,
+      "box_xyxy": [
+        234,
+        296,
+        465,
+        403
+      ]
+    },
+    {
+      "frame": 30,
+      "box_xyxy": [
+        233,
+        295,
+        470,
+        403
+      ]
+    },
+    {
+      "frame": 31,
+      "box_xyxy": [
+        233,
+        294,
+        476,
+        403
+      ]
+    },
+    {
+      "frame": 32,
+      "box_xyxy": [
+        232,
+        291,
+        482,
+        403
+      ]
+    },
+    {
+      "frame": 33,
+      "box_xyxy": [
+        232,
+        287,
+        488,
+        403
+      ]
+    },
+    {
+      "frame": 34,
+      "box_xyxy": [
+        231,
+        283,
+        494,
+        403
+      ]
+    },
+    {
+      "frame": 35,
+      "box_xyxy": [
+        230,
+        278,
+        499,
+        403
+      ]
+    },
+    {
+      "frame": 36,
+      "box_xyxy": [
+        230,
+        274,
+        505,
+        403
+      ]
+    },
+    {
+      "frame": 37,
+      "box_xyxy": [
+        229,
+        270,
+        511,
+        403
+      ]
+    },
+    {
+      "frame": 38,
+      "box_xyxy": [
+        229,
+        266,
+        516,
+        403
+      ]
+    },
+    {
+      "frame": 39,
+      "box_xyxy": [
+        228,
+        261,
+        522,
+        403
+      ]
+    },
+    {
+      "frame": 40,
+      "box_xyxy": [
+        228,
+        257,
+        528,
+        403
+      ]
+    },
+    {
+      "frame": 41,
+      "box_xyxy": [
+        227,
+        253,
+        534,
+        403
+      ]
+    },
+    {
+      "frame": 42,
+      "box_xyxy": [
+        226,
+        248,
+        540,
+        403
+      ]
+    },
+    {
+      "frame": 43,
+      "box_xyxy": [
+        226,
+        244,
+        545,
+        403
+      ]
+    },
+    {
+      "frame": 44,
+      "box_xyxy": [
+        225,
+        240,
+        551,
+        403
+      ]
+    },
+    {
+      "frame": 45,
+      "box_xyxy": [
+        225,
+        236,
+        557,
+        403
+      ]
+    },
+    {
+      "frame": 46,
+      "box_xyxy": [
+        224,
+        231,
+        562,
+        403
+      ]
+    },
+    {
+      "frame": 47,
+      "box_xyxy": [
+        223,
+        227,
+        568,
+        403
+      ]
+    },
+    {
+      "frame": 48,
+      "box_xyxy": [
+        223,
+        223,
+        574,
+        403
+      ]
+    },
+    {
+      "frame": 49,
+      "box_xyxy": [
+        222,
+        218,
+        580,
+        403
+      ]
+    },
+    {
+      "frame": 50,
+      "box_xyxy": [
+        222,
+        214,
+        586,
+        403
+      ]
+    },
+    {
+      "frame": 51,
+      "box_xyxy": [
+        221,
+        210,
+        591,
+        403
+      ]
+    },
+    {
+      "frame": 52,
+      "box_xyxy": [
+        221,
+        205,
+        597,
+        403
+      ]
+    },
+    {
+      "frame": 53,
+      "box_xyxy": [
+        220,
+        201,
+        603,
+        403
+      ]
+    },
+    {
+      "frame": 54,
+      "box_xyxy": [
+        219,
+        197,
+        608,
+        403
+      ]
+    },
+    {
+      "frame": 55,
+      "box_xyxy": [
+        219,
+        192,
+        614,
+        403
+      ]
+    },
+    {
+      "frame": 56,
+      "box_xyxy": [
+        218,
+        188,
+        620,
+        403
+      ]
+    },
+    {
+      "frame": 57,
+      "box_xyxy": [
+        218,
+        184,
+        626,
+        403
+      ]
+    },
+    {
+      "frame": 58,
+      "box_xyxy": [
+        217,
+        180,
+        632,
+        403
+      ]
+    },
+    {
+      "frame": 59,
+      "box_xyxy": [
+        217,
+        175,
+        637,
+        403
+      ]
+    },
+    {
+      "frame": 60,
+      "box_xyxy": [
+        216,
+        171,
+        643,
+        403
+      ]
+    },
+    {
+      "frame": 61,
+      "box_xyxy": [
+        217,
+        175,
+        640,
+        403
+      ]
+    },
+    {
+      "frame": 62,
+      "box_xyxy": [
+        218,
+        179,
+        638,
+        403
+      ]
+    },
+    {
+      "frame": 63,
+      "box_xyxy": [
+        219,
+        183,
+        636,
+        403
+      ]
+    },
+    {
+      "frame": 64,
+      "box_xyxy": [
+        220,
+        188,
+        633,
+        403
+      ]
+    },
+    {
+      "frame": 65,
+      "box_xyxy": [
+        221,
+        192,
+        630,
+        403
+      ]
+    },
+    {
+      "frame": 66,
+      "box_xyxy": [
+        222,
+        196,
+        628,
+        403
+      ]
+    },
+    {
+      "frame": 67,
+      "box_xyxy": [
+        222,
+        200,
+        626,
+        403
+      ]
+    },
+    {
+      "frame": 68,
+      "box_xyxy": [
+        223,
+        204,
+        623,
+        403
+      ]
+    },
+    {
+      "frame": 69,
+      "box_xyxy": [
+        224,
+        208,
+        620,
+        403
+      ]
+    },
+    {
+      "frame": 70,
+      "box_xyxy": [
+        225,
+        212,
+        618,
+        403
+      ]
+    },
+    {
+      "frame": 71,
+      "box_xyxy": [
+        226,
+        216,
+        616,
+        403
+      ]
+    },
+    {
+      "frame": 72,
+      "box_xyxy": [
+        227,
+        220,
+        613,
+        403
+      ]
+    },
+    {
+      "frame": 73,
+      "box_xyxy": [
+        228,
+        225,
+        610,
+        403
+      ]
+    },
+    {
+      "frame": 74,
+      "box_xyxy": [
+        229,
+        229,
+        608,
+        403
+      ]
+    },
+    {
+      "frame": 75,
+      "box_xyxy": [
+        230,
+        233,
+        606,
+        403
+      ]
+    },
+    {
+      "frame": 76,
+      "box_xyxy": [
+        231,
+        237,
+        603,
+        403
+      ]
+    },
+    {
+      "frame": 77,
+      "box_xyxy": [
+        232,
+        241,
+        600,
+        403
+      ]
+    },
+    {
+      "frame": 78,
+      "box_xyxy": [
+        233,
+        245,
+        598,
+        403
+      ]
+    },
+    {
+      "frame": 79,
+      "box_xyxy": [
+        234,
+        249,
+        596,
+        403
+      ]
+    },
+    {
+      "frame": 80,
+      "box_xyxy": [
+        234,
+        254,
+        593,
+        403
+      ]
+    },
+    {
+      "frame": 81,
+      "box_xyxy": [
+        235,
+        258,
+        590,
+        403
+      ]
+    },
+    {
+      "frame": 82,
+      "box_xyxy": [
+        236,
+        262,
+        588,
+        403
+      ]
+    },
+    {
+      "frame": 83,
+      "box_xyxy": [
+        237,
+        266,
+        586,
+        403
+      ]
+    },
+    {
+      "frame": 84,
+      "box_xyxy": [
+        238,
+        270,
+        583,
+        403
+      ]
+    },
+    {
+      "frame": 85,
+      "box_xyxy": [
+        239,
+        274,
+        580,
+        403
+      ]
+    },
+    {
+      "frame": 86,
+      "box_xyxy": [
+        240,
+        278,
+        578,
+        403
+      ]
+    },
+    {
+      "frame": 87,
+      "box_xyxy": [
+        241,
+        282,
+        576,
+        403
+      ]
+    },
+    {
+      "frame": 88,
+      "box_xyxy": [
+        242,
+        286,
+        573,
+        403
+      ]
+    },
+    {
+      "frame": 89,
+      "box_xyxy": [
+        243,
+        291,
+        570,
+        403
+      ]
+    },
+    {
+      "frame": 90,
+      "box_xyxy": [
+        244,
+        295,
+        568,
+        403
+      ]
+    },
+    {
+      "frame": 91,
+      "box_xyxy": [
+        245,
+        299,
+        566,
+        403
+      ]
+    },
+    {
+      "frame": 92,
+      "box_xyxy": [
+        246,
+        303,
+        563,
+        403
+      ]
+    },
+    {
+      "frame": 93,
+      "box_xyxy": [
+        247,
+        307,
+        560,
+        403
+      ]
+    },
+    {
+      "frame": 94,
+      "box_xyxy": [
+        247,
+        311,
+        558,
+        403
+      ]
+    },
+    {
+      "frame": 95,
+      "box_xyxy": [
+        248,
+        315,
+        556,
+        403
+      ]
+    },
+    {
+      "frame": 96,
+      "box_xyxy": [
+        249,
+        320,
+        553,
+        403
+      ]
+    },
+    {
+      "frame": 97,
+      "box_xyxy": [
+        250,
+        324,
+        550,
+        403
+      ]
+    },
+    {
+      "frame": 98,
+      "box_xyxy": [
+        251,
+        328,
+        548,
+        403
+      ]
+    },
+    {
+      "frame": 99,
+      "box_xyxy": [
+        252,
+        332,
+        546,
+        403
+      ]
+    },
+    {
+      "frame": 100,
+      "box_xyxy": [
+        253,
+        336,
+        543,
+        403
+      ]
+    },
+    {
+      "frame": 101,
+      "box_xyxy": [
+        250,
+        333,
+        544,
+        403
+      ]
+    },
+    {
+      "frame": 102,
+      "box_xyxy": [
+        246,
+        330,
+        544,
+        403
+      ]
+    },
+    {
+      "frame": 103,
+      "box_xyxy": [
+        243,
+        326,
+        545,
+        403
+      ]
+    },
+    {
+      "frame": 104,
+      "box_xyxy": [
+        240,
+        323,
+        546,
+        403
+      ]
+    },
+    {
+      "frame": 105,
+      "box_xyxy": [
+        236,
+        320,
+        547,
+        403
+      ]
+    },
+    {
+      "frame": 106,
+      "box_xyxy": [
+        233,
+        317,
+        548,
+        403
+      ]
+    },
+    {
+      "frame": 107,
+      "box_xyxy": [
+        229,
+        313,
+        548,
+        403
+      ]
+    },
+    {
+      "frame": 108,
+      "box_xyxy": [
+        226,
+        310,
+        549,
+        403
+      ]
+    },
+    {
+      "frame": 109,
+      "box_xyxy": [
+        223,
+        307,
+        550,
+        403
+      ]
+    },
+    {
+      "frame": 110,
+      "box_xyxy": [
+        219,
+        304,
+        550,
+        403
+      ]
+    },
+    {
+      "frame": 111,
+      "box_xyxy": [
+        216,
+        301,
+        551,
+        403
+      ]
+    },
+    {
+      "frame": 112,
+      "box_xyxy": [
+        212,
+        297,
+        552,
+        403
+      ]
+    },
+    {
+      "frame": 113,
+      "box_xyxy": [
+        209,
+        294,
+        553,
+        403
+      ]
+    },
+    {
+      "frame": 114,
+      "box_xyxy": [
+        206,
+        291,
+        554,
+        403
+      ]
+    },
+    {
+      "frame": 115,
+      "box_xyxy": [
+        202,
+        288,
+        554,
+        403
+      ]
+    },
+    {
+      "frame": 116,
+      "box_xyxy": [
+        199,
+        284,
+        555,
+        403
+      ]
+    },
+    {
+      "frame": 117,
+      "box_xyxy": [
+        196,
+        281,
+        556,
+        403
+      ]
+    },
+    {
+      "frame": 118,
+      "box_xyxy": [
+        192,
+        278,
+        556,
+        403
+      ]
+    },
+    {
+      "frame": 119,
+      "box_xyxy": [
+        189,
+        275,
+        557,
+        403
+      ]
+    },
+    {
+      "frame": 120,
+      "box_xyxy": [
+        186,
+        272,
+        558,
+        403
+      ]
+    },
+    {
+      "frame": 121,
+      "box_xyxy": [
+        182,
+        268,
+        559,
+        403
+      ]
+    },
+    {
+      "frame": 122,
+      "box_xyxy": [
+        179,
+        265,
+        560,
+        403
+      ]
+    },
+    {
+      "frame": 123,
+      "box_xyxy": [
+        175,
+        262,
+        560,
+        403
+      ]
+    },
+    {
+      "frame": 124,
+      "box_xyxy": [
+        172,
+        259,
+        561,
+        403
+      ]
+    },
+    {
+      "frame": 125,
+      "box_xyxy": [
+        169,
+        255,
+        562,
+        403
+      ]
+    },
+    {
+      "frame": 126,
+      "box_xyxy": [
+        165,
+        252,
+        562,
+        403
+      ]
+    },
+    {
+      "frame": 127,
+      "box_xyxy": [
+        162,
+        249,
+        563,
+        403
+      ]
+    },
+    {
+      "frame": 128,
+      "box_xyxy": [
+        158,
+        246,
+        564,
+        403
+      ]
+    },
+    {
+      "frame": 129,
+      "box_xyxy": [
+        155,
+        242,
+        565,
+        403
+      ]
+    },
+    {
+      "frame": 130,
+      "box_xyxy": [
+        152,
+        239,
+        566,
+        403
+      ]
+    },
+    {
+      "frame": 131,
+      "box_xyxy": [
+        148,
+        236,
+        566,
+        403
+      ]
+    },
+    {
+      "frame": 132,
+      "box_xyxy": [
+        145,
+        233,
+        567,
+        403
+      ]
+    },
+    {
+      "frame": 133,
+      "box_xyxy": [
+        142,
+        230,
+        568,
+        403
+      ]
+    },
+    {
+      "frame": 134,
+      "box_xyxy": [
+        138,
+        226,
+        568,
+        403
+      ]
+    },
+    {
+      "frame": 135,
+      "box_xyxy": [
+        135,
+        223,
+        569,
+        403
+      ]
+    },
+    {
+      "frame": 136,
+      "box_xyxy": [
+        132,
+        220,
+        570,
+        403
+      ]
+    },
+    {
+      "frame": 137,
+      "box_xyxy": [
+        128,
+        217,
+        571,
+        403
+      ]
+    },
+    {
+      "frame": 138,
+      "box_xyxy": [
+        125,
+        213,
+        572,
+        403
+      ]
+    },
+    {
+      "frame": 139,
+      "box_xyxy": [
+        121,
+        210,
+        572,
+        403
+      ]
+    },
+    {
+      "frame": 140,
+      "box_xyxy": [
+        118,
+        207,
+        573,
+        403
+      ]
+    },
+    {
+      "frame": 141,
+      "box_xyxy": [
+        120,
+        209,
+        571,
+        403
+      ]
+    },
+    {
+      "frame": 142,
+      "box_xyxy": [
+        123,
+        210,
+        569,
+        403
+      ]
+    },
+    {
+      "frame": 143,
+      "box_xyxy": [
+        125,
+        212,
+        567,
+        403
+      ]
+    },
+    {
+      "frame": 144,
+      "box_xyxy": [
+        127,
+        213,
+        565,
+        403
+      ]
+    },
+    {
+      "frame": 145,
+      "box_xyxy": [
+        129,
+        215,
+        562,
+        403
+      ]
+    },
+    {
+      "frame": 146,
+      "box_xyxy": [
+        132,
+        216,
+        560,
+        403
+      ]
+    },
+    {
+      "frame": 147,
+      "box_xyxy": [
+        134,
+        218,
+        558,
+        403
+      ]
+    },
+    {
+      "frame": 148,
+      "box_xyxy": [
+        136,
+        220,
+        556,
+        403
+      ]
+    },
+    {
+      "frame": 149,
+      "box_xyxy": [
+        138,
+        221,
+        554,
+        403
+      ]
+    },
+    {
+      "frame": 150,
+      "box_xyxy": [
+        141,
+        223,
+        552,
+        403
+      ]
+    },
+    {
+      "frame": 151,
+      "box_xyxy": [
+        143,
+        224,
+        550,
+        403
+      ]
+    },
+    {
+      "frame": 152,
+      "box_xyxy": [
+        145,
+        226,
+        548,
+        403
+      ]
+    },
+    {
+      "frame": 153,
+      "box_xyxy": [
+        148,
+        227,
+        546,
+        403
+      ]
+    },
+    {
+      "frame": 154,
+      "box_xyxy": [
+        150,
+        229,
+        544,
+        403
+      ]
+    },
+    {
+      "frame": 155,
+      "box_xyxy": [
+        152,
+        231,
+        542,
+        403
+      ]
+    },
+    {
+      "frame": 156,
+      "box_xyxy": [
+        154,
+        232,
+        539,
+        403
+      ]
+    },
+    {
+      "frame": 157,
+      "box_xyxy": [
+        157,
+        234,
+        537,
+        403
+      ]
+    },
+    {
+      "frame": 158,
+      "box_xyxy": [
+        159,
+        235,
+        535,
+        403
+      ]
+    },
+    {
+      "frame": 159,
+      "box_xyxy": [
+        161,
+        237,
+        533,
+        403
+      ]
+    },
+    {
+      "frame": 160,
+      "box_xyxy": [
+        164,
+        238,
+        531,
+        403
+      ]
+    },
+    {
+      "frame": 161,
+      "box_xyxy": [
+        166,
+        240,
+        529,
+        403
+      ]
+    },
+    {
+      "frame": 162,
+      "box_xyxy": [
+        168,
+        242,
+        527,
+        403
+      ]
+    },
+    {
+      "frame": 163,
+      "box_xyxy": [
+        170,
+        243,
+        525,
+        403
+      ]
+    },
+    {
+      "frame": 164,
+      "box_xyxy": [
+        173,
+        245,
+        523,
+        403
+      ]
+    },
+    {
+      "frame": 165,
+      "box_xyxy": [
+        175,
+        246,
+        520,
+        403
+      ]
+    },
+    {
+      "frame": 166,
+      "box_xyxy": [
+        177,
+        248,
+        518,
+        403
+      ]
+    },
+    {
+      "frame": 167,
+      "box_xyxy": [
+        179,
+        250,
+        516,
+        403
+      ]
+    },
+    {
+      "frame": 168,
+      "box_xyxy": [
+        182,
+        251,
+        514,
+        403
+      ]
+    },
+    {
+      "frame": 169,
+      "box_xyxy": [
+        184,
+        253,
+        512,
+        403
+      ]
+    },
+    {
+      "frame": 170,
+      "box_xyxy": [
+        186,
+        254,
+        510,
+        403
+      ]
+    },
+    {
+      "frame": 171,
+      "box_xyxy": [
+        189,
+        256,
+        508,
+        403
+      ]
+    },
+    {
+      "frame": 172,
+      "box_xyxy": [
+        191,
+        257,
+        506,
+        403
+      ]
+    },
+    {
+      "frame": 173,
+      "box_xyxy": [
+        193,
+        259,
+        504,
+        403
+      ]
+    },
+    {
+      "frame": 174,
+      "box_xyxy": [
+        195,
+        261,
+        502,
+        403
+      ]
+    },
+    {
+      "frame": 175,
+      "box_xyxy": [
+        198,
+        262,
+        500,
+        403
+      ]
+    },
+    {
+      "frame": 176,
+      "box_xyxy": [
+        200,
+        264,
+        497,
+        403
+      ]
+    },
+    {
+      "frame": 177,
+      "box_xyxy": [
+        202,
+        265,
+        495,
+        403
+      ]
+    },
+    {
+      "frame": 178,
+      "box_xyxy": [
+        204,
+        267,
+        493,
+        403
+      ]
+    },
+    {
+      "frame": 179,
+      "box_xyxy": [
+        207,
+        268,
+        491,
+        403
+      ]
+    },
+    {
+      "frame": 180,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 181,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 182,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 183,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 184,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 185,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 186,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 187,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 188,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 189,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 190,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 191,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 192,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 193,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 194,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 195,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 196,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 197,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 198,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 199,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 200,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 201,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 202,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 203,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 204,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 205,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 206,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 207,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 208,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 209,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 210,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 211,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 212,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 213,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 214,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 215,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 216,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 217,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 218,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 219,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 220,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 221,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 222,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 223,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 224,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 225,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    },
+    {
+      "frame": 226,
+      "box_xyxy": [
+        209,
+        270,
+        489,
+        403
+      ]
+    }
+  ],
+  "action_intervals": [
+    {
+      "action": "take bread",
+      "start_frame": 13,
+      "end_frame": 71,
+      "start_time_seconds": 0.8667,
+      "end_time_seconds": 4.7333,
+      "clipped_to_clip": false
+    },
+    {
+      "action": "take cheese",
+      "start_frame": 100,
+      "end_frame": 172,
+      "start_time_seconds": 6.6667,
+      "end_time_seconds": 11.4667,
+      "clipped_to_clip": false
+    },
+    {
+      "action": "open cheese",
+      "start_frame": 172,
+      "end_frame": 270,
+      "start_time_seconds": 11.4667,
+      "end_time_seconds": 15.0667,
+      "clipped_to_clip": true,
+      "clipped_note": "original interval ends at frame 270, beyond the clip; the timeline shows it only up to frame 226."
+    }
+  ],
+  "action_transition_timestamps_seconds": [
+    0.8667,
+    6.6667,
+    11.4667
+  ],
+  "label_provenance": "All displayed labels and intervals are taken directly from the GTEA action annotations for S1_Cheese_C1. No model predictions, confidences, or invented labels are shown.",
+  "files": {
+    "source_clip": "cooking-source-clip.mp4",
+    "localized_stream": "cooking-localized-stream.mp4",
+    "attribution": "ATTRIBUTION.md"
+  }
+}

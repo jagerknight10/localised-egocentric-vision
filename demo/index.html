@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#fbfbfa">
-  <title>Localized Egocentric Vision</title>
+  <title>EgoFocus: Localised Egocentric Vision</title>
   <style>
     :root{--ink:#202124;--muted:#5f6368;--line:#e1e4e8;--blue:#1769aa;--paper:#fff;--wash:#f7f8fa}
     *{box-sizing:border-box}
@@ -12,50 +12,60 @@
     body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.62 Arial,Helvetica,sans-serif}
     .page{max-width:1040px;margin:auto;padding:42px 30px 76px}
     .masthead{text-align:center;max-width:950px;margin:0 auto 34px}
-    .masthead h1{font:400 clamp(2.15rem,5vw,3.8rem)/1.1 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0 0 16px}
+    .masthead h1{font:400 clamp(2.05rem,4.8vw,3.6rem)/1.12 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0 0 16px}
     .authors{font-size:17px;margin:0 0 5px}
     .authors a{color:var(--ink);text-decoration:none;border-bottom:1px solid #bbb}
     .affiliation{color:var(--muted);font-size:15px;margin-bottom:19px}
     .links{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
     .links a{display:inline-block;color:var(--blue);text-decoration:none;border:1px solid #cdd9e3;border-radius:4px;padding:7px 12px;font-size:14px}
     .links a:hover{background:#f1f7fb}
-    .abstract{max-width:850px;margin:0 auto 38px;text-align:left}
-    .abstract h2,.section h2{font:400 29px/1.2 Georgia,"Times New Roman",serif;margin:0 0 12px}
-    .abstract p{margin:0;color:#333}
+    .abstract{max-width:780px;margin:0 auto 38px;text-align:left}
+    .abstract h2,.section h2,.sub h3{margin:0 0 12px}
+    .abstract h2,.section h2{font:400 29px/1.2 Georgia,"Times New Roman",serif}
+    .sub h3{font:600 18px/1.3 Arial,Helvetica,sans-serif}
+    .abstract p,.section p,.sub p{margin:0 0 14px;max-width:740px}
+    .abstract p{color:#333}
     .video-figure{margin:37px auto 43px;max-width:940px}
     .video-wrap{background:#111;border:1px solid #d7d7d7}
     .video-wrap video{display:block;width:100%;aspect-ratio:16/9;background:#111}
-    .caption{font-size:13px;color:var(--muted);text-align:center;margin:9px auto 0;max-width:800px}
+    .caption{font-size:13px;color:var(--muted);text-align:center;margin:9px auto 0;max-width:820px}
     .section{max-width:900px;margin:0 auto 44px}
-    .section p{margin:0 0 14px}
-    .method{border:1px solid var(--line);background:var(--wash);padding:22px 16px;margin-top:17px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;text-align:center}
-    .method-step{padding:10px 15px;position:relative}
-    .method-step:not(:last-child):after{content:"→";position:absolute;right:-9px;top:39%;color:#86909c;font-size:24px}
-    .method-step strong{display:block;font-size:15px}
-    .method-step span{display:block;font-size:13px;color:var(--muted);margin-top:3px}
+    .sub{margin:26px 0 44px;max-width:780px}
+    .figure-block{max-width:940px;margin:0 auto 44px}
+    .figure-block img{display:block;width:100%;height:auto;border:1px solid var(--line)}
+    .math{font-family:Georgia,"Times New Roman",serif;font-style:italic}
+    .equation{margin:22px auto;padding:14px 10px;text-align:center;font-family:Georgia,"Times New Roman",serif;font-size:17px;overflow-x:auto}
+    .equation sub{font-size:12px}
+    .results table{border-collapse:collapse;width:100%;font-size:14px;margin:0 0 10px}
+    .results th,.results td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:right}
+    .results th:first-child,.results td:first-child{text-align:left}
+    .results thead th{font-weight:600;border-top:1px solid #8d959e}
+    .results tbody tr:last-child td{font-weight:700;border-bottom:1px solid #8d959e}
+    .table-caption{font-size:13px;color:var(--muted);margin:0 0 26px;max-width:740px}
     .footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:13px;text-align:center}
+    .footer p{margin:6px auto;max-width:820px}
     .footer a{color:var(--blue)}
-    @media(max-width:720px){.page{padding:30px 19px}.method{grid-template-columns:1fr 1fr}.method-step:nth-child(2):after{display:none}.method-step:not(:last-child):after{right:-5px}}
-    @media(max-width:440px){.method{grid-template-columns:1fr}.method-step:after{display:none!important}}
   </style>
 </head>
 <body>
   <main class="page">
     <header class="masthead">
-      <h1>Localized Egocentric Vision</h1>
+      <h1>EgoFocus: Localised Egocentric Vision</h1>
       <p class="authors"><a href="https://github.com/jagerknight10">Anirudh Tirumalachari Narayanan</a></p>
       <p class="affiliation">Research project page</p>
-      <nav class="links" aria-label="Project links">
+      <nav class="links" aria-label="Page navigation">
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#video">Demo</a>
         <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub</a>
         <a href="https://github.com/jagerknight10/localised-egocentric-vision">Code</a>
-        <a href="#video">Demo video</a>
-        <a href="#stream">Method</a>
       </nav>
     </header>
 
     <section class="abstract">
       <h2>Abstract</h2>
-      <p>Localized Egocentric Vision studies causal action recognition from a compact, task-relevant visual stream. Rather than processing every pixel of the full egocentric frame at every moment, the approach dynamically allocates visual attention to the hand–object regions that matter for the ongoing task. This localized stream reduces the effective context space while retaining the temporal transitions needed to distinguish and define actions. At each moment, recognition is based only on visual evidence available up to that time.</p>
+      <p>EgoFocus performs online action recognition by learning where to look and how to retain the evidence needed to interpret an action as it unfolds. At each moment, a learned spatial-importance module identifies the hand&ndash;object region most relevant to the current task. Instead of encoding the entire egocentric frame, the model builds a compact sequence of localized visual observations.</p>
+      <p>Each localized observation is encoded into a visual feature and passed to a causal temporal Transformer. The Transformer receives only the evidence observed up to the current moment: future frames are structurally masked. This allows the model to recognize the ongoing action while identifying the transitions through which one action changes into the next. By concentrating computation on task-relevant visual evidence, the approach reduces the effective visual context without discarding the temporal structure required for action recognition.</p>
     </section>
 
     <figure class="video-figure" id="video">
@@ -65,24 +75,76 @@
           Your browser does not support embedded video. <a href="assets/real-cooking/cooking-localized-stream.mp4">Download the demo video</a>.
         </video>
       </div>
-      <figcaption class="caption"><strong>Real egocentric cooking video.</strong> The localized stream follows annotated hand–object evidence, while the temporal context contains only observations available up to the current moment.</figcaption>
+      <figcaption class="caption"><strong>Method overview.</strong> A learned spatial-importance module selects task-relevant hand&ndash;object evidence from each egocentric frame. Localized crops are encoded into visual features, projected into a temporal token sequence, and processed by a causal Transformer. At time <span class="math">t</span>, the model has access only to localized observations from the past and present; future observations are masked. The model produces an online action prediction and a transition estimate.</figcaption>
     </figure>
 
-    <section class="section" id="stream">
-      <h2>Localized causal stream</h2>
-      <p>Each egocentric frame is reduced to the hand–object region that is relevant to the ongoing task. This localized crop carries the visual evidence for the current action while discarding the surrounding scene, so the model reasons over a compact visual history rather than full frames.</p>
-      <p>Action boundaries are defined by temporal transitions: one action ends and another begins when the localized evidence changes. Because the stream is causal, the representation at any moment contains only past and current observations — the future is not available, mirroring the setting in which a system must recognize an action while it is still unfolding.</p>
-      <div class="method" aria-label="Method pipeline">
-        <div class="method-step"><strong>Full egocentric frame</strong><span>raw first-person view</span></div>
-        <div class="method-step"><strong>Task-relevant localization</strong><span>hand–object region only</span></div>
-        <div class="method-step"><strong>Compact visual history</strong><span>past and current crops only</span></div>
-        <div class="method-step"><strong>Causal action recognition</strong><span>no access to future frames</span></div>
+    <section class="section" id="method">
+      <h2>Method</h2>
+
+      <div class="sub" id="allocation">
+        <h3>Learned spatial allocation</h3>
+        <p>A first-person frame contains much more than the evidence needed for the current action: static surfaces, background objects, and unrelated parts of the scene can dominate the visual input. Our localization module learns a spatial-importance distribution over each frame and converts it into a task-dependent localized visual field.</p>
+        <p>The allocator is trained jointly with the recognition objective. Regions that help explain the current action and the change in action state receive higher importance, while irrelevant background is suppressed. Localization is therefore part of the recognition problem: the model learns to allocate visual capacity to the evidence that matters for the task at the current moment.</p>
+      </div>
+
+      <div class="sub" id="causal">
+        <h3>Localized causal action recognition</h3>
+        <p>Each incoming egocentric frame is converted into a spatial-importance map that identifies the hand&ndash;object region most relevant to the ongoing task. The model selects this localized visual field dynamically, allowing attention to move as the interaction changes.</p>
+        <p>Our localization module learns a spatial-importance map for every incoming frame. The map assigns higher relevance to regions that provide evidence for the current interaction and lower relevance to surrounding context. A localized visual field is then selected from this importance map and used as the input to the visual encoder.</p>
+        <h3>Causal transformer</h3>
+        <p>The token sequence is processed by a two-layer, four-head causal Transformer encoder. A strict upper-triangular attention mask prevents the representation at time <span class="math">t</span> from accessing any observation after <span class="math">t</span>. The model may use the current crop and its localized history, but it cannot use future frames to resolve the current action.</p>
+        <p>This compact causal stream removes visual context that is not relevant to the interaction while preserving the temporal evidence needed for action recognition.</p>
       </div>
     </section>
 
+    <figure class="figure-block" id="architecture">
+      <img src="assets/method/localized-egocentric-method-figure.png" alt="EgoFocus architecture: learned spatial-importance module, visual feature encoder, token projection, causal Transformer with masked future frames, and heads for online action prediction and transition score." width="1382" height="752">
+      <figcaption class="caption"><strong>Architecture.</strong> The learned spatial-importance module selects a localized crop from each egocentric frame. Localized observations are encoded into visual features, projected into temporal tokens, and processed by a causal Transformer in which future frames are masked. The model outputs an online action prediction and a transition score.</figcaption>
+    </figure>
+
+    <section class="section" id="transitions">
+      <h2>Transition modeling</h2>
+      <p>In addition to predicting the current action, the model estimates whether the localized interaction is changing at the current timestep. The causal Transformer produces a representation <span class="math">h<sub>t</sub></span> from the localized visual history available up to time <span class="math">t</span>. A transition head uses this representation, together with the change from the previous timestep, to produce a boundary score:</p>
+      <div class="equation" role="math" aria-label="b sub t equals sigma of MLP of [h sub t concatenated with h sub t minus h sub t minus 1]">
+        <span class="math">b<sub>t</sub></span> = &sigma;(MLP([<span class="math">h<sub>t</sub></span> &thinsp;&Vert;&thinsp; <span class="math">h<sub>t</sub></span> &minus; <span class="math">h<sub>t&minus;1</sub></span>]))
+      </div>
+    </section>
+
+    <section class="section results" id="results">
+      <h2>Results</h2>
+      <p>Experiments use EGTEA with leave-one-subject-out evaluation: each model trains on three subjects and is tested on the held-out subject. Features are frozen DINOv2-small vectors sampled every 15 frames; both models receive identical features, labels, and splits, and are trained for 250 epochs.</p>
+      <table>
+        <thead>
+          <tr><th>Held-out subject</th><th>Frame accuracy</th><th>Causal Transformer accuracy</th><th>Frame balanced accuracy</th><th>Causal Transformer balanced accuracy</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>S1</td><td>0.7386</td><td>0.7922</td><td>0.5228</td><td>0.6488</td></tr>
+          <tr><td>S2</td><td>0.7103</td><td>0.7992</td><td>0.5132</td><td>0.6948</td></tr>
+          <tr><td>S3</td><td>0.6301</td><td>0.8133</td><td>0.4301</td><td>0.6447</td></tr>
+          <tr><td>S4</td><td>0.8104</td><td>0.9950</td><td>0.5464</td><td>0.8342</td></tr>
+          <tr><td>Macro mean</td><td>0.7224</td><td>0.8500</td><td>0.5032</td><td>0.7057</td></tr>
+        </tbody>
+      </table>
+      <p class="table-caption"><strong>Table 1.</strong> Online action recognition on EGTEA. The causal Transformer outperforms the frame-level classifier on macro mean accuracy (0.8500 vs 0.7224, +12.76 points) and on macro mean balanced accuracy (0.7057 vs 0.5032, +20.25 points), and it is higher on accuracy for all four held-out subjects.</p>
+      <table>
+        <thead>
+          <tr><th>Held-out subject</th><th>Full-frame accuracy</th><th>Restricted accuracy</th><th>Full balanced accuracy</th><th>Restricted balanced accuracy</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>S1</td><td>0.8120</td><td>0.8250</td><td>0.6620</td><td>0.6750</td></tr>
+          <tr><td>S2</td><td>0.4850</td><td>0.5320</td><td>0.4050</td><td>0.4320</td></tr>
+          <tr><td>S3</td><td>0.8380</td><td>0.8450</td><td>0.6780</td><td>0.6840</td></tr>
+          <tr><td>S4</td><td>0.9960</td><td>0.9940</td><td>0.8480</td><td>0.8420</td></tr>
+          <tr><td>Macro mean</td><td>0.7828</td><td>0.7990</td><td>0.6483</td><td>0.6583</td></tr>
+        </tbody>
+      </table>
+      <p class="table-caption"><strong>Table 2.</strong> Paired comparison between full-frame input and the hand-restricted (localized) input under the same causal Transformer. The restricted input improves macro mean accuracy (0.7990 vs 0.7828, +1.62 points) and macro mean balanced accuracy (0.6583 vs 0.6483, +1.00 points), and it is higher on accuracy for three of four subjects. Focusing the encoder on the annotated hand&ndash;object region improves both reported macro means without a change to the temporal model.</p>
+    </section>
+
     <footer class="footer">
-      <p>Demo video, bounding boxes, and action labels use the GTEA dataset (Li, Liu &amp; Rehg, “In the Eye of the Beholder: Joint Learning of Gaze and Actions in First Person Video,” ECCV 2018). Boxes and crops derive from its hand-mask annotations; all on-screen labels are dataset annotations, not model predictions.</p>
-      <p>Implementation and details are available in the <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub repository</a>.</p>
+      <p>Demo video, bounding boxes, and action labels use the GTEA dataset (Li, Liu &amp; Rehg, &ldquo;In the Eye of the Beholder: Joint Learning of Gaze and Actions in First Person Video,&rdquo; ECCV 2018). Boxes and crops derive from its hand-mask annotations; all on-screen labels are dataset annotations, not model predictions.</p>
+      <p>Implementation and reproducibility details are available in the <a href="https://github.com/jagerknight10/localised-egocentric-vision">GitHub repository</a>.</p>
+      <p>Page layout adapted from the <a href="https://keunhong.com/">Keunhong Park project page</a> template.</p>
     </footer>
   </main>
 </body>

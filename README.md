@@ -5,7 +5,7 @@ The current experiment uses the EGTEA dataset. I am trying to understand the fol
 
 > Does focused temporal context improve action recognition compared with classifying each sampled frame independently?
 
-## Interactive showcase
+## Brief
 
 **EgoFocus** is a self-contained, visual companion to this project: an animated walkthrough of localized visual input, causal temporal context, and the reported results. 
 

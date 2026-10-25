@@ -18,8 +18,9 @@ predictions are shown. Regenerate the assets with
 `python3 scripts/make_real_cooking_demo_assets.py` (requires the GTEA raw
 video and hand-mask annotations).
 
+## Model
 
-The model used is a masked causal transformer: its prediction at `t` may use frames up to `t - 1`, but never future frames.
+The temporal model is a masked causal Transformer: its prediction at time `t` may use evidence from time `0` through `t`, but never future frames. Two layers, four heads, context window of 128 sampled timesteps, under 2 million trainable parameters.
 
 ## Current pipeline
 
@@ -27,17 +28,32 @@ The model used is a masked causal transformer: its prediction at `t` may use fra
 video frames
     ↓ sample every 15 frames
 DINOv2-small (frozen pretrained encoder)
-    ↓ one 384-dimensional vector per sampled frame
-frame classifier or causal Transformer
-    ↓
-action prediction
+    ↓ 256 patch tokens per frame, each 384-dimensional
+    ├────────────┬─────────────────────────┐
+    ↓ CLS token  ↓ learned allocation       ↓ oracle hand-box crop
+  [T, 384]     SpatialImportanceAllocator  restricted RGB frame
+               weights [T, 16, 16]         ↓ DINOv2-small
+               localized feature [T, 384]  [T, 384]
+    └────────────┴─────────────────────────┘
+                    ↓
+        frame classifier or causal Transformer
+                    ↓
+        action prediction
 ```
 
-Pre-trained weights are taken and are used to create vision embeddings for our video frames. It converts each RGB frame into a visual feature vector. The trainable models operate on those saved vectors, making repeated experiments faster and separating visual encoding from temporal modeling.
+The frozen DINOv2-small encoder converts each sampled RGB frame into visual features. The trainable models operate on those saved features, which keeps repeated experiments fast and separates visual encoding from temporal modeling. Three visual-input variants feed the same temporal models:
 
-The implementation also supports a restricted-input path designed to study efficient, relevance-based visual encoders. A hand-region annotation is converted into a clipped bounding box, expanded by a controlled margin when required, and applied before DINOv2 inference. The encoder therefore spends its fixed visual-compute budget on pixels most directly associated with the hand-object interaction instead of repeatedly processing (relatively) irrelevant background, while preserving the same encoder weights, preprocessing interface, temporal model, and classifier. This creates a controlled representation-level comparison: any difference can be attributed to the visual field presented to the encoder rather than to a larger model or a different downstream architecture. The current restricted path is deliberately an oracle-input analysis that measures the potential value of relevant context without automatic hand detection.
+- **Full frame (CLS):** one 384-dimensional vector per frame, the standard pipeline.
+- **Learned spatial allocation:** a single-query attention module scores all 256 DINOv2 patch tokens of a frame. The softmax scores form a 16x16 spatial-importance map, and the weighted sum of patch tokens is one 384-dimensional localized feature. The allocator learns *where to look* from content, so the selected region can move as the hand-object interaction changes. The importance map is supervised with KL divergence against a normalized target map built from the ground-truth hand box: `KL(target || predicted)`. Training is joint: action cross-entropy plus this KL term, so regions that help explain the current action and the change in action state receive higher importance.
+- **Oracle hand-restricted crop:** a hand-region annotation is converted into a clipped bounding box, expanded by a controlled margin, and applied before DINOv2 inference. This path measures the potential value of relevant context with a perfect localizer; the learned allocation path is the automatic version of the same idea.
 
 Evaluation uses leave-one-subject-out testing: each result trains on the other subjects and tests on the held-out subject. The annotation scan produced 73 observed action names.
+
+## Current status
+
+- Implemented and tested: frozen DINOv2 feature extraction and caching, frame baseline, causal Transformer, oracle restricted-input path, and the learned spatial-importance allocator (importance map + localized feature, KL-divergence supervision, joint loss with the recognition objective).
+- The allocator is verified on synthetic patch-token data: output contracts, near-uniform initialization, box-target geometry, KL loss behavior, convergence of the learned map onto the ground-truth box, and a joint allocator + causal Transformer run at the real 384-dimensional contract.
+- Not yet done: re-extraction of real DINOv2 patch-token caches (the current caches store CLS tokens only), real-data training of the allocator, and the paired learned-allocation vs oracle-restricted comparison on the held-out subjects.
 
 ## Models compared
 
@@ -62,7 +78,7 @@ These mechanisms address different failure modes: corrupted artifacts, accidenta
 
 ## Current results
 
-Results below are from the four held-out-subject runs, trained for 250 epochs.
+Results below are from the four held-out-subject runs on the full-frame (CLS) pipeline, trained for 250 epochs.
 
 | Held-out subject | Frame accuracy | Transformer accuracy | Frame balanced accuracy | Transformer balanced accuracy |
 |---|---:|---:|---:|---:|
@@ -72,9 +88,9 @@ Results below are from the four held-out-subject runs, trained for 250 epochs.
 | S4 | 0.8104 | 0.9950 | 0.5464 | 0.8342 |
 | **Macro mean** | **0.7224** | **0.8500** | **0.5032** | **0.7057** |
 
-The Transformer is higher on this pilot for both reported metrics. 
+The Transformer is higher on this pilot for both reported metrics.
 
-### Restricted-input pilot
+### Oracle restricted-input comparison
 
 Using the same EGTEA clips, labels, subject splits, and causal Transformer, the oracle hand-restricted representation produced the following paired results:
 

@@ -16,7 +16,8 @@ below supervises the map from ground-truth box annotations when available.
 from __future__ import annotations
 
 import torch
-from torch import nn, F
+from torch import nn
+from torch.nn import functional as F
 
 
 class SpatialImportanceAllocator(nn.Module):

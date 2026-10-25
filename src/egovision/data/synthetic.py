@@ -71,16 +71,25 @@ def make_signal_patch_sequence(
     segment_length: int = 12,
     signal_std: float = 4.0,
     noise_std: float = 1.0,
+    distractor_std: float = 0.0,
+    background_mixture_std: float = 0.0,
     seed: int = 0,
+    signal_seed: int = 1234,
 ) -> PatchSequenceSample:
     """Build a synthetic patch-token sequence with a moving signal box.
 
     The sequence is split into ``length // segment_length`` segments.
-    Segment ``k`` has action label ``k % num_classes``; inside its box,
+    Each segment gets one action label drawn uniformly at random, so
+    the label is *not* a function of the timestep: the only evidence
+    for the action is the content inside the box. Inside the box,
     patch tokens are noise + class signal + hand signal. Outside the
-    box, tokens are pure noise. The box position is fixed per segment
-    and jitters by one cell every other step within the segment, so the
-    allocator must follow the hand from content, not from a fixed
+    box, tokens are noise plus a per-frame distractor direction: the
+    background carries context that is present, changing, and not the
+    action, so averaging over the whole frame dilutes the true signal
+    with misleading evidence. ``distractor_std=0`` reduces the
+    background to pure noise. The box position is fixed per segment
+    and jitters by one cell every other step within the segment, so
+    the allocator must follow the hand from content, not from a fixed
     position prior.
 
     Args:
@@ -91,7 +100,17 @@ def make_signal_patch_sequence(
         segment_length: timesteps per action segment.
         signal_std: scale of the in-box class/hand signal.
         noise_std: scale of the background noise.
+        distractor_std: scale of the per-frame background distractor.
+        background_mixture_std: scale of a weak mixture of all class
+            signals in the background. Models the scene containing
+            other objects of other classes, so the whole-frame average
+            is dominated by wrong-class evidence; only the local box
+            carries the true class strongly.
         seed: RNG seed for reproducible generation.
+        signal_seed: seed for the class/hand signal directions. Kept
+            separate from ``seed`` so the same action carries the same
+            content signature across clips, which is what lets a model
+            generalize from one clip to another.
 
     Returns:
         PatchSequenceSample with patches shaped [length, grid^2, patch_dim].
@@ -102,13 +121,16 @@ def make_signal_patch_sequence(
         raise ValueError("grid, patch_dim, and num_classes must be positive.")
 
     generator = torch.Generator().manual_seed(seed)
+    signal_generator = torch.Generator().manual_seed(signal_seed)
     num_segments = length // segment_length
     num_patches = grid * grid
 
-    # Fixed per-class signal directions, drawn before the noise stream so
-    # the same class always carries the same content signature.
-    class_signals = torch.randn(num_classes, patch_dim, generator=generator) * signal_std
-    hand_signal = torch.randn(patch_dim, generator=generator) * signal_std
+    # Per-class signal directions are drawn from a fixed seed so the same
+    # action always carries the same content signature across clips.
+    class_signals = torch.randn(num_classes, patch_dim, generator=signal_generator) * signal_std
+    hand_signal = torch.randn(patch_dim, generator=signal_generator) * signal_std
+    # Weak version of every class signal present in the scene.
+    background_mixture = (class_signals.sum(dim=0) * background_mixture_std / signal_std)
 
     patches = torch.zeros(length, num_patches, patch_dim)
     labels = torch.zeros(length, dtype=torch.long)
@@ -118,7 +140,9 @@ def make_signal_patch_sequence(
     px = 256 // grid
 
     for segment in range(num_segments):
-        label = segment % num_classes
+        # Random per-segment label: the action is not a function of time,
+        # so reading the clock cannot solve the task.
+        label = int(torch.randint(0, num_classes, (1,), generator=generator).item())
         # 0..grid-5; the +1 jitter keeps r0+c0 within [0, grid-4] so the
         # 4x4 box (rows r0..r0+3) never leaves the grid.
         offset_row = int(torch.randint(0, grid - 4, (1,), generator=generator).item())
@@ -134,6 +158,13 @@ def make_signal_patch_sequence(
             r1, c1 = r0 + 4, c0 + 4
             labels[t] = label
             boxes.append((c0 * px, r0 * px, c1 * px, r1 * px))
+            # Background: per-frame distractor context + noise.
+            patches[t] = (
+                torch.randn(num_patches, patch_dim, generator=generator) * noise_std
+                + torch.randn(patch_dim, generator=generator) * distractor_std
+                + background_mixture
+            )
+            # Hand-object box: task signal dominates the local texture.
             for r in range(r0, r1):
                 for c in range(c0, c1):
                     patches[t, r * grid + c] = (

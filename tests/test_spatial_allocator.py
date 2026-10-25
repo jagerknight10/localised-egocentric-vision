@@ -97,8 +97,6 @@ def test_importance_kl_loss() -> None:
     # Matching the peak should reduce the loss.
     assert importance_kl_loss(peak, peak).item() < loss.item()
 
-    return pytest.raises(ValueError, match="share shape")
-
 
 def test_importance_kl_loss_shape_mismatch() -> None:
     with pytest.raises(ValueError, match="share shape"):
@@ -144,21 +142,21 @@ def test_allocator_localizes_the_signal_box() -> None:
 def test_joint_allocator_and_causal_transformer_smoke() -> None:
     """End-to-end shape contract at real DINOv2-small dimensions."""
     torch.manual_seed(0)
-    sample = make_signal_patch_sequence(length=32, grid=16, patch_dim=384, num_classes=4, seed=1)
+    sample = make_signal_patch_sequence(length=36, grid=16, patch_dim=384, num_classes=4, seed=1)
     allocator = SpatialImportanceAllocator(feature_dim=384, grid=16)
-    transformer = CausalTemporalTransformer(feature_dim=384, num_classes=4, max_context=32)
+    transformer = CausalTemporalTransformer(feature_dim=384, num_classes=4, max_context=36)
 
-    patches = sample.patches.unsqueeze(0)  # [1, 32, 256, 384]
+    patches = sample.patches.unsqueeze(0)  # [1, 36, 256, 384]
     weights, features = allocator(patches)
-    logits = transformer(features)  # [1, 32, 4]
-    assert weights.shape == (1, 32, 256)
-    assert features.shape == (1, 32, 384)
-    assert logits.shape == (1, 32, 4)
+    logits = transformer(features)  # [1, 36, 4]
+    assert weights.shape == (1, 36, 256)
+    assert features.shape == (1, 36, 384)
+    assert logits.shape == (1, 36, 4)
 
     # Joint loss: action cross-entropy + KL localization, both backprop.
     targets = torch.stack([
         box_to_importance_map(box, grid=16, width=256, height=256) for box in sample.boxes
-    ]).reshape(1, 32, 256)
+    ]).reshape(1, 36, 256)
     loss = torch.nn.functional.cross_entropy(
         logits.reshape(-1, 4), sample.labels.unsqueeze(0).reshape(-1)
     ) + 0.1 * importance_kl_loss(weights.reshape(-1, 256), targets.reshape(-1, 256))

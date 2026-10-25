@@ -1,4 +1,4 @@
-# Localized Egocentric Vision
+# EgoFocus: Localized Egocentric Vision
 
 This repository studies efficient, causal action recognition in egocentric videos.
 The current experiment uses the EGTEA dataset. We are trying to understand the following.
